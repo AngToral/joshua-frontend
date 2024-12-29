@@ -1,0 +1,11 @@
+.encabezado {
+    background-image: url("../J5.jpeg");
+    opacity: 0.9;
+    background-size: cover;
+    height: 100vh;
+    background-position: center;
+}
+
+.navbar {
+    background-color: var(--negro-gris);
+}
