@@ -4,8 +4,13 @@ import './home.css'
 const Home = () => {
 
     const [scrolling, setScrolling] = useState(false);
+    // const [openNav, setOpenNav] = useState(false);
 
     useEffect(() => {
+        // window.addEventListener(
+        //     "resize",
+        //     () => window.innerWidth >= 960 && setOpenNav(false),
+        // ),
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
