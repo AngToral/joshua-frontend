@@ -15,16 +15,6 @@
     background-color: var(--negro-gris);
 }
 
-.buttonCallToAction {
-    border: 1px solid var(--azul-oscuro);
-    background-color: var(--azul-oscuro);
-    padding: 20px;
-    width: 500px;
-    border-radius: 10px;
-    font-size: x-large;
-    font-weight: bold;
-}
-
 .buttonLink:hover {
     animation-name: Getbigger;
     animation-fill-mode: both;
@@ -44,5 +34,59 @@
 
     100% {
         scale: 1.1;
+    }
+}
+
+.nav-links {
+    animation-duration: 3s;
+    animation-name: slide;
+}
+
+@keyframes slide {
+    from {
+        margin-left: 100%;
+        width: 300%;
+    }
+
+    to {
+        margin-left: 10%;
+        width: 100%;
+    }
+}
+
+.buttonCallToAction {
+    border: 1px solid var(--azul-oscuro);
+    background-color: var(--azul-oscuro);
+    font-weight: bold;
+    font-size: x-large;
+    border-radius: 10px;
+}
+
+@media screen and (min-width: 767px) {
+    .buttonCallToAction {
+        padding: 20px;
+        width: 500px;
+    }
+
+    .homePosition {
+        height: 100vw;
+        max-height: 1620px;
+        padding-bottom: 260px;
+        align-items: flex-start;
+        margin-left: 64px;
+    }
+}
+
+@media screen and (max-width: 766px) {
+    /* pantalla mobile */
+
+    .buttonCallToAction {
+        padding: 10px;
+        width: 200px;
+    }
+
+    .homePosition {
+        margin-top: 0px;
+        align-items: center;
     }
 }
