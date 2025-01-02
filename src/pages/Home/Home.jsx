@@ -41,7 +41,7 @@ const Home = () => {
             <div className='encabezado'>
                 <div className="sticky top-0 z-50">
                     {mobile ?
-                        <nav className=''>
+                        <nav className={isMenuOpen && `nav-menu`}>
                             <div className="navbar-toggle text-3xl pl-4 pt-4 cursor-pointer" onClick={mobile ? toggleMenu : null}>
                                 {isMenuOpen ? (
                                     <span className="">&times;</span>
@@ -50,7 +50,7 @@ const Home = () => {
                                 )}
                             </div>
                             {isMenuOpen &&
-                                <ul className="nav-links ml-10 text-xl absolute">
+                                <ul className="nav-links pl-10 pb-4 rounded-b-lg text-xl absolute nav-menu">
                                     <li><a href="#" className=''>Sobre mí</a></li>
                                     <li><a href="#" className=''>Servicios</a></li>
                                     <li><a href="#" className=''>Contacto</a></li>
