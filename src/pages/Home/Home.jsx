@@ -39,6 +39,9 @@ const Home = () => {
     return (
         <>
             <div className='encabezado'>
+                <video className="myVideo" autoPlay loop muted>
+                    <source src="hero-joshua-home.mp4" type="video/mp4" />
+                </video>
                 <div className="sticky top-0 z-50">
                     {mobile ?
                         <nav className={isMenuOpen && `nav-menu`}>
