@@ -51,39 +51,37 @@ const Home = () => {
     const scrollToAboutMe = () => {
         document.getElementById('aboutMe').scrollIntoView({ behavior: 'smooth' });
     };
-
     const scrollToServices = () => {
         document.getElementById('services').scrollIntoView({ behavior: 'smooth' });
     };
-
     const scrollToContact = () => {
         document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
     };
-
     const scrollToHome = () => {
         document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
     };
 
     const onEmailContact = () => {
-        if (clientName === "" || clientEmail === "" || subject === "" || subjectType === "") {
-            messageApi.open({
-                type: 'warning',
-                content: "You must fill in all the fields"
-            })
-        } else {
-            console.log(clientName, clientEmail, subject, subjectType)
-            setLoading(true)
-            //await sendContactEmail({ clientName, clientEmail, subject, subjectType })
-            setLoading(false)
-            messageApi.open({
-                type: 'success',
-                content: "Message sent successfully"
-            })
-            setClientName("")
-            setClientEmail("")
-            setSubject("")
-            setSubjectType("")
-        }
+        // if (clientName === "" || clientEmail === "" || subject === "" || subjectType === "") {
+        //     messageApi.open({
+        //         type: 'warning',
+        //         content: "You must fill in all the fields"
+        //     })
+        // } else {
+        // console.log(clientName, clientEmail, subject, subjectType)
+        console.log("Funciona")
+        setLoading(true)
+        //await sendContactEmail({ clientName, clientEmail, subject, subjectType })
+        // setLoading(false)
+        // messageApi.open({
+        //     type: 'success',
+        //     content: "Message sent successfully"
+        // })
+        // setClientName("")
+        // setClientEmail("")
+        // setSubject("")
+        // setSubjectType("")
+        // }
     }
 
     return (
@@ -204,32 +202,30 @@ const Home = () => {
                             <div className="flex flex-col justify-center items-center">
                                 <p type="text" className="flex mt-10 md:mt-0 mx-8 md:text-3xl text-xl font-extralight">
                                     If you need more information, or want to subscribe to any of the plans, write to me using this form, and I will be happy to answer you!                                </p>
-                                {loading ? "Cargando..." :
-                                    <form
-                                        className="form"
-                                    >
-                                        <div className="flex flex-col gap-4">
-                                            <input placeholder='Name' value={clientName} onChange={e => setClientName(e.target.value)} className='bg-transparent border-transparent border-b-white border-[1px] font-light' />
-                                            <input placeholder='Email' value={clientEmail} onChange={e => setClientEmail(e.target.value)} className='bg-transparent border-transparent border-b-white border-[1px] font-light' />
-                                            <div className='flex justify-between'>
-                                                <label className='font-extralight'>Select a contact type:</label>
-                                                <select value={subjectType} onChange={e => setSubjectType(e.target.value)} className='bg-transparent font-extralight' placeholder="Lala">
-                                                    <option value="info">Information</option>
-                                                    <option value="basic">Basic Plan</option>
-                                                    <option value="plus">Plus Pack</option>
-                                                    <option value="pro">Pro Pack</option>
-                                                    <option value="personal">Personal Training</option>
-                                                </select>
-                                            </div>
-                                            <textarea placeholder='Massage' value={subject} onChange={e => setSubject(e.target.value)} className='bg-transparent border-transparent border-b-white border-[1px] font-light' />
+                                <form
+                                    className="form"
+                                >
+                                    <div className="flex flex-col gap-4">
+                                        <input placeholder='Name' value={clientName} onChange={e => setClientName(e.target.value)} className='bg-transparent border-transparent border-b-white border-[1px] font-light' />
+                                        <input placeholder='Email' value={clientEmail} onChange={e => setClientEmail(e.target.value)} className='bg-transparent border-transparent border-b-white border-[1px] font-light' />
+                                        <div className='flex justify-between'>
+                                            <label className='font-extralight'>Select a contact type:</label>
+                                            <select value={subjectType} onChange={e => setSubjectType(e.target.value)} className='bg-transparent font-extralight' placeholder="Lala">
+                                                <option value="info">Information</option>
+                                                <option value="basic">Basic Plan</option>
+                                                <option value="plus">Plus Pack</option>
+                                                <option value="pro">Pro Pack</option>
+                                                <option value="personal">Personal Training</option>
+                                            </select>
                                         </div>
-                                        <div className='flex justify-center'>
-                                            <button onClick={onEmailContact} className="md:text-lg font-bold p-3 mt-8 contact-button">
-                                                Send
-                                            </button>
-                                        </div>
-                                    </form>
-                                }
+                                        <textarea placeholder='Massage' value={subject} onChange={e => setSubject(e.target.value)} className='bg-transparent border-transparent border-b-white border-[1px] font-light' />
+                                    </div>
+                                    <div className='flex justify-center'>
+                                        <button onClick={onEmailContact} className="md:text-lg font-bold p-3 mt-8 contact-button">
+                                            {loading ? "Loading..." : "Send"}
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
