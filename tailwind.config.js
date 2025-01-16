@@ -17,6 +17,7 @@ export default {
           600: "#031730", //azul muy oscuro
           700: "#010a13", //azul casi negro
           800: "#242424", //negro gris
+          900: "#ffffffbf" // blanco transparente
         },
       }
     },
