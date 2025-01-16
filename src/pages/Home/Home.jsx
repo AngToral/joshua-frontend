@@ -39,10 +39,26 @@ const Home = () => {
         }
     };
 
+    const scrollToAboutMe = () => {
+        document.getElementById('aboutMe').scrollIntoView({ behavior: 'smooth' });
+    };
+
+    const scrollToServices = () => {
+        document.getElementById('services').scrollIntoView({ behavior: 'smooth' });
+    };
+
+    const scrollToContact = () => {
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    };
+
+    const scrollToHome = () => {
+        document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
+    };
+
     return (
         <>
             <div>
-                <div className='encabezado'>
+                <div id='home' className='encabezado'>
                     <video className="myVideo" autoPlay loop muted>
                         <source src="hero-joshua-home.mp4" type="video/mp4" />
                     </video>
@@ -58,9 +74,9 @@ const Home = () => {
                                 </div>
                                 {isMenuOpen &&
                                     <ul className="nav-links pl-10 pb-4 rounded-b-lg text-xl absolute nav-menu">
-                                        <li><a href="#" className=''>About me</a></li>
-                                        <li><a href="#" className=''>Services</a></li>
-                                        <li><a href="#" className=''>Contact</a></li>
+                                        <li><a onClick={scrollToAboutMe} className=''>About me</a></li>
+                                        <li><a onClick={scrollToServices}>Services</a></li>
+                                        <li><a onClick={scrollToContact}>Contact</a></li>
                                         <li><a href="#" className=''>Let's start</a></li>
                                         <li><a href="#" className=''>Login</a></li>
                                     </ul>
@@ -73,11 +89,11 @@ const Home = () => {
                                     "header flex flex-wrap justify-around h-[70px] items-center text-xl"
                             }>
                                 <a>
-                                    <img src="guanteGris.png" alt="logoJoshua" className='h-12 w-8 cursor-pointer' />
+                                    <img onClick={scrollToHome} src="guanteGris.png" alt="logoJoshua" className='h-12 w-8 cursor-pointer' />
                                 </a>
-                                <a className='link'>About me</a>
-                                <a className='link'>Services</a>
-                                <a className='link'>Contact</a>
+                                <a onClick={scrollToAboutMe} className='link'>About me</a>
+                                <a onClick={scrollToServices} className='link'>Services</a>
+                                <a onClick={scrollToContact} className='link'>Contact</a>
                                 <a className='link'>Let's start</a>
                                 <a className='link'>Login</a>
                             </div>
@@ -90,10 +106,10 @@ const Home = () => {
                         <p className='font-bold md:text-6xl text-4xl lg:mb-6 mb-4'>Your best version awaits you!</p>
                         <h1 className='font-bold md:text-4xl text-2xl md:mb-6 mb-4'>I'm Joshua, a professional boxer and personal trainer</h1>
                         <p className='md:text-2xl text-lg md:mb-6 mb-4'>Discover effective workouts to achieve your fitness goals. Start your transformation today!</p>
-                        <button className='buttonLink buttonCallToAction'>Start today!</button>
+                        <button onClick={scrollToContact} className='buttonLink buttonCallToAction'>Start today!</button>
                     </div >
                 </div>
-                <div className="about-me bg-joshua-50 text-black">
+                <div id='aboutMe' className="about-me bg-joshua-50 text-black">
                     <img className='image-me' src='./J5.png' />
                     <div className="flex flex-col px-10 text-about-me py-4">
                         <p className='pb-4 font-bold text-xl'>Meet Joshua, Your Guide to Fitness Success!</p>
@@ -103,7 +119,7 @@ const Home = () => {
                             I'm excited to share my knowledge and experience with you. Let's work together to achieve your fitness dreams!</p>
                     </div>
                 </div>
-                <div className="flex flex-col items-center text-lg max-h-[680px] bg-joshua-100 pb-10">
+                <div id='services' className="flex flex-col items-center text-lg max-h-[680px] bg-joshua-100 pb-10">
                     <p className='flex justify-center items-end md:h-[150px] md:text-4xl text-2xl md:m-0 m-5'>Services and plans</p>
                     <div className="flex justify-center flex-col md:flex-row items-center text-lg h-screen bg-joshua-100 gap-8 ">
                         <div className='flex flex-col gap-5'>
@@ -132,7 +148,7 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-                <div className='flex md:flex-row flex-col h-[500px] bg-joshua-500 h-[810px] md:h-[550px]'>
+                <div id='contact' className='flex md:flex-row flex-col h-[500px] bg-joshua-500 h-[810px] md:h-[550px]'>
                     <div className='contact-bg flex justify-center flex-col md:w-1/2'>
                         <p className='md:text-3xl text-2xl flex items-center ml-10 mt-10'>Contact me!</p>
                         <div className='flex flex-col ml-16 md:mb-10 h-[290px] justify-center gap-2'>
@@ -173,7 +189,9 @@ const Home = () => {
                 </div>
                 <footer className="text-lg bg-joshua-700">
                     <div className="flex md:flex-row flex-col justify-center md:justify-around items-center mb-5 gap-5 md:gap-0">
-                        <img src="./logoCompletoGris.png" alt="logo" className='h-36 w-36 mt-10' />
+                        <a onClick={scrollToHome} >
+                            <img src="./logoCompletoGris.png" alt="logo" className='h-36 w-36 mt-10 cursor-pointer' />
+                        </a>
                         <div className='flex flex-col md:ml-16 justify-center gap-2'>
                             <a href="">
                                 <div className='flex gap-2 items-center'>
