@@ -102,32 +102,31 @@ const Home = () => {
                             I'm excited to share my knowledge and experience with you. Let's work together to achieve your fitness dreams!</p>
                     </div>
                 </div>
-                <div className="flex flex-col items-center text-lg max-h-[640px] bg-joshua-100">
-                    <p className='flex justify-center items-end h-[150px] text-4xl'>Services and plans</p>
-                    <div className="flex justify-center items-center text-lg h-screen bg-joshua-100 gap-16">
-                        <div className='flex flex-col gap-10'>
-                            <div className='max-w-80 flex flex-col items-center'>
-                                <BsPersonArmsUp className='h-16 w-16 mb-4' />
-                                <p className='pb-4'>In-Person Training</p>
-                                <p className='pb-4'>Experience the benefits of one-on-one coaching with me in my studio.</p>
+                <div className="flex flex-col items-center text-lg max-h-[680px] bg-joshua-100">
+                    <p className='flex justify-center items-end md:h-[150px] md:text-4xl text-2xl md:m-0 m-5'>Services and plans</p>
+                    <div className="flex justify-center flex-col md:flex-row items-center text-lg h-screen bg-joshua-100 md:gap-16 gap-5">
+                        <div className='flex flex-col md:gap-10 gap-5'>
+                            <div className='max-w-80 flex flex-col items-center justify-center'>
+                                <BsPersonArmsUp className='md:h-16 md:w-16 h-8 w-8 md:mb-4' />
+                                <p className='md:pb-4'>In-Person Training</p>
+                                <p className='md:pb-4'>Experience the benefits of one-on-one coaching with me in my studio.</p>
                             </div>
                             <div className='max-w-80 flex flex-col items-center'>
-                                <MdWorkspacePremium className='h-16 w-16 mb-4' />
-                                <p className='pb-4'>Plus Pack</p>
-                                <p className='pb-4'>You will have all the training videos and Nutritional recommendations.</p>
+                                <MdWorkspacePremium className='h-16 md:w-16 h-8 w-8 md:mb-4' />
+                                <p className='md:pb-4'>Plus Pack</p>
+                                <p className='md:pb-4'>You will have all the training videos and Nutritional recommendations.</p>
                             </div>
                         </div>
-                        <div className='flex flex-col gap-10'>
+                        <div className='flex flex-col md:gap-10 gap-5'>
                             <div className='max-w-80 flex flex-col items-center'>
-
-                                <IoStar className='h-16 w-16 mb-4' />
-                                <p className='pb-4'>Basic Plan</p>
-                                <p className='pb-4'>You will have all my training videos wherever you want to work out.</p>
+                                <IoStar className='h-16 md:w-16 h-8 w-8 md:mb-4' />
+                                <p className='md:pb-4'>Basic Plan</p>
+                                <p className='md:pb-4'>You will have all my training videos wherever you want to work out.</p>
                             </div>
                             <div className='max-w-80 flex flex-col items-center'>
-                                <FaTrophy className='h-16 w-16 mb-4' />
-                                <p className='pb-4'>Pro Pack</p>
-                                <p className='pb-4'>You will have all the training videos, nutritional recommendations, information about injuries and how to treat them, and stretching.</p>
+                                <FaTrophy className='h-16 md:w-16 h-8 w-8 md:mb-4' />
+                                <p className='md:pb-4'>Pro Pack</p>
+                                <p className='md:pb-4'>You will have all the training videos, nutritional recommendations, information about injuries and how to treat them, and stretching.</p>
                             </div>
                         </div>
                     </div>

@@ -107,18 +107,17 @@
         margin-top: 0px;
         align-items: center;
     }
+
+    .image-me {
+        justify-content: center;
+        /* border-top-right-radius: 9999px; */
+        /* border-bottom-right-radius: 9999px; */
+        border-bottom-left-radius: 9999px;
+    }
 }
 
 @media screen and (max-width: 900px) {
     /* incluye pantalla tablet */
-
-    .image-me {
-        height: 50%;
-        display: flex;
-        justify-content: center;
-        border-bottom-left-radius: 9999px;
-        border-bottom-right-radius: 9999px;
-    }
 
     .text-about-me {
         margin-top: 20px;
