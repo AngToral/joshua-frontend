@@ -6,11 +6,20 @@ import { MdWorkspacePremium } from "react-icons/md";
 import { FaTrophy } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { AiOutlineMail } from "react-icons/ai";
+import { message } from 'antd';
+
 const Home = () => {
 
+    const [clientName, setClientName] = useState("")
+    const [clientEmail, setClientEmail] = useState("")
+    const [subject, setSubject] = useState("")
+    const [subjectType, setSubjectType] = useState("")
     const [scrolling, setScrolling] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [mobile, setMobile] = useState(window.innerWidth <= 766);
+
+    const [messageApi, contextHolder] = message.useMessage();
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -55,8 +64,31 @@ const Home = () => {
         document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
     };
 
+    const onEmailContact = () => {
+        if (clientName === "" || clientEmail === "" || subject === "" || subjectType === "") {
+            messageApi.open({
+                type: 'warning',
+                content: "You must fill in all the fields"
+            })
+        } else {
+            console.log(clientName, clientEmail, subject, subjectType)
+            setLoading(true)
+            //await sendContactEmail({ clientName, clientEmail, subject, subjectType })
+            setLoading(false)
+            messageApi.open({
+                type: 'success',
+                content: "Message sent successfully"
+            })
+            setClientName("")
+            setClientEmail("")
+            setSubject("")
+            setSubjectType("")
+        }
+    }
+
     return (
         <>
+            {contextHolder}
             <div>
                 <div id='home' className='encabezado'>
                     <video className="myVideo" autoPlay loop muted>
@@ -109,6 +141,7 @@ const Home = () => {
                         <button onClick={scrollToContact} className='buttonLink buttonCallToAction'>Start today!</button>
                     </div >
                 </div>
+                {/* about */}
                 <div id='aboutMe' className="about-me bg-joshua-50 text-black">
                     <img className='image-me' src='./J5.png' />
                     <div className="flex flex-col px-10 text-about-me py-4">
@@ -119,6 +152,7 @@ const Home = () => {
                             I'm excited to share my knowledge and experience with you. Let's work together to achieve your fitness dreams!</p>
                     </div>
                 </div>
+                {/* servicios */}
                 <div id='services' className="flex flex-col items-center text-lg max-h-[680px] bg-joshua-100 pb-10">
                     <p className='flex justify-center items-end md:h-[150px] md:text-4xl text-2xl md:m-0 m-5'>Services and plans</p>
                     <div className="flex justify-center flex-col md:flex-row items-center text-lg h-screen bg-joshua-100 gap-8 ">
@@ -148,6 +182,7 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
+                {/* contacto */}
                 <div id='contact' className='flex md:flex-row flex-col h-[500px] bg-joshua-500 h-[810px] md:h-[550px]'>
                     <div className='contact-bg flex justify-center flex-col md:w-1/2'>
                         <p className='md:text-3xl text-2xl flex items-center ml-10 mt-10'>Contact me!</p>
@@ -169,34 +204,37 @@ const Home = () => {
                             <div className="flex flex-col justify-center items-center">
                                 <p type="text" className="flex mt-10 md:mt-0 mx-8 md:text-3xl text-xl font-extralight">
                                     If you need more information, or want to subscribe to any of the plans, write to me using this form, and I will be happy to answer you!                                </p>
-                                <form
-                                    className="form"
-                                >
-                                    <div className="flex flex-col gap-4">
-                                        <input placeholder='Name' className='bg-transparent border-transparent border-b-white border-[1px] font-light' />
-                                        <input placeholder='Email' className='bg-transparent border-transparent border-b-white border-[1px] font-light' />
-                                        <div className='flex justify-between'>
-                                            <label className='font-extralight'>Select a contact type:</label>
-                                            <select className='bg-transparent font-extralight' placeholder="Lala">
-                                                <option value="info">Information</option>
-                                                <option value="basic">Basic Plan</option>
-                                                <option value="plus">Plus Pack</option>
-                                                <option value="pro">Pro Pack</option>
-                                                <option value="personal">Personal Training</option>
-                                            </select>
+                                {loading ? "Cargando..." :
+                                    <form
+                                        className="form"
+                                    >
+                                        <div className="flex flex-col gap-4">
+                                            <input placeholder='Name' value={clientName} onChange={e => setClientName(e.target.value)} className='bg-transparent border-transparent border-b-white border-[1px] font-light' />
+                                            <input placeholder='Email' value={clientEmail} onChange={e => setClientEmail(e.target.value)} className='bg-transparent border-transparent border-b-white border-[1px] font-light' />
+                                            <div className='flex justify-between'>
+                                                <label className='font-extralight'>Select a contact type:</label>
+                                                <select value={subjectType} onChange={e => setSubjectType(e.target.value)} className='bg-transparent font-extralight' placeholder="Lala">
+                                                    <option value="info">Information</option>
+                                                    <option value="basic">Basic Plan</option>
+                                                    <option value="plus">Plus Pack</option>
+                                                    <option value="pro">Pro Pack</option>
+                                                    <option value="personal">Personal Training</option>
+                                                </select>
+                                            </div>
+                                            <textarea placeholder='Massage' value={subject} onChange={e => setSubject(e.target.value)} className='bg-transparent border-transparent border-b-white border-[1px] font-light' />
                                         </div>
-                                        <textarea placeholder='Massage' className='bg-transparent border-transparent border-b-white border-[1px] font-light' />
-                                    </div>
-                                    <div className='flex justify-center'>
-                                        <button className="md:text-lg font-bold p-3 mt-8 contact-button">
-                                            Send
-                                        </button>
-                                    </div>
-                                </form>
+                                        <div className='flex justify-center'>
+                                            <button onClick={onEmailContact} className="md:text-lg font-bold p-3 mt-8 contact-button">
+                                                Send
+                                            </button>
+                                        </div>
+                                    </form>
+                                }
                             </div>
                         </div>
                     </div>
                 </div>
+                {/* footer */}
                 <footer className="text-lg bg-joshua-700">
                     <div className="flex md:flex-row flex-col justify-center md:justify-around items-center mb-5 gap-5 md:gap-0">
                         <a onClick={scrollToHome} >
