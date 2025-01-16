@@ -172,9 +172,9 @@ const Home = () => {
                     </div>
                 </div>
                 <footer className="text-lg bg-joshua-700">
-                    <div className="flex justify-around items-center mb-5">
+                    <div className="flex md:flex-row flex-col justify-center md:justify-around items-center mb-5 gap-5 md:gap-0">
                         <img src="./logoCompletoGris.png" alt="logo" className='h-36 w-36 mt-10' />
-                        <div className='flex flex-col ml-16 justify-center gap-2'>
+                        <div className='flex flex-col md:ml-16 justify-center gap-2'>
                             <a href="">
                                 <div className='flex gap-2 items-center'>
                                     <FaInstagram className='h-4 w-4' />
