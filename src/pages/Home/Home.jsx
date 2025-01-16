@@ -131,8 +131,29 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-                <div className="flex justify-center items-center text-lg h-[500px] bg-joshua-500">
-                    <p>Contacto</p>
+                <div className="flex flex-col justify-center items-center text-lg h-[500px] bg-joshua-500">
+                    <p className='md:text-4xl text-2xl h-[100px] flex items-center'>Contact</p>
+                    <div className="flex md:justify-start justify-center items-center" >
+                        <div className="flex">
+                            <form
+                                className="form"
+                            >
+                                <p type="text" className="flex justify-center m-4 md:text-4xl text-2xl font-extralight">
+                                    Háblame
+                                </p>
+                                <div className="flex flex-col font-display gap-4">
+                                    <input className='bg-joshua-50 rounded-lg' />
+                                    <input className='bg-joshua-50 rounded-lg' />
+                                    <textarea className='bg-joshua-50 rounded-lg' />
+                                </div>
+                                <div className='flex justify-center'>
+                                    <button className="md:text-lg font-bold p-3 mt-3 contact-button">
+                                        Enviar
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
                 <footer className="flex justify-center items-center text-lg h-[300px] bg-joshua-700">
                     <p>Footer</p>

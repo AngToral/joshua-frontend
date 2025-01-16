@@ -151,3 +151,18 @@
         align-items: center;
     }
 }
+
+.form {
+    border: 1px solid white;
+    border-radius: 20px;
+    padding: 20px;
+    width: 330px;
+    background: rgba(255, 255, 255, 0.55);
+}
+
+.contact-button {
+    border: 1px solid var(--azul-muy-oscuro);
+    background-color: var(--azul-muy-oscuro);
+    border-radius: 10px;
+    width: 200px;
+}
