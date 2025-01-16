@@ -172,10 +172,20 @@ const Home = () => {
                                 <form
                                     className="form"
                                 >
-                                    <div className="flex flex-col font-display gap-4">
-                                        <input placeholder='Name' className='bg-transparent border-transparent border-b-white border-[1px] font-extralight' />
-                                        <input placeholder='Email' className='bg-transparent border-transparent border-b-white border-[1px] font-extralight' />
-                                        <textarea placeholder='Massage' className='bg-transparent border-transparent border-b-white border-[1px] font-extralight' />
+                                    <div className="flex flex-col gap-4">
+                                        <input placeholder='Name' className='bg-transparent border-transparent border-b-white border-[1px] font-light' />
+                                        <input placeholder='Email' className='bg-transparent border-transparent border-b-white border-[1px] font-light' />
+                                        <div className='flex justify-between'>
+                                            <label className='font-extralight'>Select a contact type:</label>
+                                            <select className='bg-transparent font-extralight' placeholder="Lala">
+                                                <option value="info">Information</option>
+                                                <option value="basic">Basic Plan</option>
+                                                <option value="plus">Plus Pack</option>
+                                                <option value="pro">Pro Pack</option>
+                                                <option value="personal">Personal Training</option>
+                                            </select>
+                                        </div>
+                                        <textarea placeholder='Massage' className='bg-transparent border-transparent border-b-white border-[1px] font-light' />
                                     </div>
                                     <div className='flex justify-center'>
                                         <button className="md:text-lg font-bold p-3 mt-8 contact-button">
