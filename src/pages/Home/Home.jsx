@@ -7,19 +7,31 @@ import { FaTrophy } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { AiOutlineMail } from "react-icons/ai";
 import { message } from 'antd';
+import { useForm } from "react-hook-form";
 
 const Home = () => {
 
-    const [clientName, setClientName] = useState("")
-    const [clientEmail, setClientEmail] = useState("")
-    const [subject, setSubject] = useState("")
-    const [subjectType, setSubjectType] = useState("")
     const [scrolling, setScrolling] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [loading, setLoading] = useState(false);
     const [mobile, setMobile] = useState(window.innerWidth <= 766);
 
     const [messageApi, contextHolder] = message.useMessage();
+
+    const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
+    const onSubmit = async (data) => {
+        console.log(data)
+        setLoading(true)
+        await sendContactEmail({ clientName, clientEmail, subject })
+        setLoading(false)
+        messageApi.open({
+            type: 'success',
+            content: "Your message has been sent successfully",
+        })
+        reset()
+    }
+
+    // console.log(watch("clientName")); // watch input value by passing the name of it
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -60,29 +72,6 @@ const Home = () => {
     const scrollToHome = () => {
         document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
     };
-
-    const onEmailContact = () => {
-        // if (clientName === "" || clientEmail === "" || subject === "" || subjectType === "") {
-        //     messageApi.open({
-        //         type: 'warning',
-        //         content: "You must fill in all the fields"
-        //     })
-        // } else {
-        // console.log(clientName, clientEmail, subject, subjectType)
-        console.log("Funciona")
-        setLoading(true)
-        //await sendContactEmail({ clientName, clientEmail, subject, subjectType })
-        // setLoading(false)
-        // messageApi.open({
-        //     type: 'success',
-        //     content: "Message sent successfully"
-        // })
-        // setClientName("")
-        // setClientEmail("")
-        // setSubject("")
-        // setSubjectType("")
-        // }
-    }
 
     return (
         <>
@@ -202,15 +191,12 @@ const Home = () => {
                             <div className="flex flex-col justify-center items-center">
                                 <p type="text" className="flex mt-10 md:mt-0 mx-8 md:text-3xl text-xl font-extralight">
                                     If you need more information, or want to subscribe to any of the plans, write to me using this form, and I will be happy to answer you!                                </p>
-                                <form
-                                    className="form"
-                                >
+
+                                <form onSubmit={handleSubmit(onSubmit)}>
                                     <div className="flex flex-col gap-4">
-                                        <input placeholder='Name' value={clientName} onChange={e => setClientName(e.target.value)} className='bg-transparent border-transparent border-b-white border-[1px] font-light' />
-                                        <input placeholder='Email' value={clientEmail} onChange={e => setClientEmail(e.target.value)} className='bg-transparent border-transparent border-b-white border-[1px] font-light' />
-                                        <div className='flex justify-between'>
+                                        <div className='flex justify-between mt-6'>
                                             <label className='font-extralight'>Select a contact type:</label>
-                                            <select value={subjectType} onChange={e => setSubjectType(e.target.value)} className='bg-transparent font-extralight' placeholder="Lala">
+                                            <select {...register("subjectType")} className='bg-transparent font-extralight' placeholder="Lala">
                                                 <option value="info">Information</option>
                                                 <option value="basic">Basic Plan</option>
                                                 <option value="plus">Plus Pack</option>
@@ -218,14 +204,16 @@ const Home = () => {
                                                 <option value="personal">Personal Training</option>
                                             </select>
                                         </div>
-                                        <textarea placeholder='Massage' value={subject} onChange={e => setSubject(e.target.value)} className='bg-transparent border-transparent border-b-white border-[1px] font-light' />
-                                    </div>
-                                    <div className='flex justify-center'>
-                                        <button onClick={onEmailContact} className="md:text-lg font-bold p-3 mt-8 contact-button">
-                                            {loading ? "Loading..." : "Send"}
-                                        </button>
+                                        <input placeholder='Name' {...register("clientName", { required: true })} className='bg-transparent border-transparent border-b-white border-[1px] font-light' />
+                                        {errors.clientName && <span className='text-red-400'>This field is required</span>}
+                                        <input placeholder='Email' {...register("clientEmail", { required: true })} className='bg-transparent border-transparent border-b-white border-[1px] font-light' />
+                                        {errors.clientEmail && <span className='text-red-400'>This field is required</span>}
+                                        <textarea placeholder='Message' {...register("subject", { required: true })} className='bg-transparent border-transparent border-b-white border-[1px] font-light' />
+                                        {errors.subject && <span className='text-red-400'>This field is required</span>}
+                                        <button type='submit'>{loading ? "Loading..." : "Send"}</button>
                                     </div>
                                 </form>
+
                             </div>
                         </div>
                     </div>
