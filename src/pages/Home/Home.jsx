@@ -9,18 +9,22 @@ import { AiOutlineMail } from "react-icons/ai";
 import { Modal, message } from 'antd';
 import { useForm } from "react-hook-form";
 import { sendContactEmail, sendNewAccountEmail } from '../../apiService/userApi';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
 
     const [scrolling, setScrolling] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [registerSent, setRegisterSent] = useState(false);
     const [mobile, setMobile] = useState(window.innerWidth <= 766);
 
     const [messageApi, contextHolder] = message.useMessage();
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { register: register2, handleSubmit: handleSubmit2, reset: reset2, formState: { errors: errors2 } } = useForm();
+
+    const navigate = useNavigate();
 
     const onSubmit = async (data) => {
         const { subjectType, clientName, clientEmail, subject } = data
@@ -47,6 +51,7 @@ const Home = () => {
         })
         reset2()
         setIsModalOpen(false)
+        setRegisterSent(true)
     }
 
     const toggleMenu = () => {
@@ -97,6 +102,10 @@ const Home = () => {
         setIsModalOpen(false);
     };
 
+    function handleLogin() {
+        navigate("/login")
+    }
+
     return (
         <>
             {contextHolder}
@@ -121,7 +130,7 @@ const Home = () => {
                                         <li><a onClick={scrollToServices}>Services</a></li>
                                         <li><a onClick={scrollToContact}>Contact</a></li>
                                         <li><a onClick={showModal} className=''>Sign in!</a></li>
-                                        <li><a href="#" className=''>Login</a></li>
+                                        <li><a onClick={handleLogin} className=''>Login</a></li>
                                     </ul>
                                 }
                             </nav>
@@ -138,7 +147,7 @@ const Home = () => {
                                 <a onClick={scrollToServices} className='link'>Services</a>
                                 <a onClick={scrollToContact} className='link'>Contact</a>
                                 <a onClick={showModal} className='link'>Sign in!</a>
-                                <a className='link'>Login</a>
+                                <a className='link' onClick={handleLogin}>Login</a>
                             </div>
                         }
                     </div >
@@ -217,7 +226,11 @@ const Home = () => {
                                 <p className="flex mt-5 mx-8 md:text-3xl text-xl font-extralight">
                                     Are you clear about it? Subscribe now:
                                 </p>
-                                <button onClick={showModal} className="flex mt-5 mx-8 md:text-4xl text-2xl font-extralight link">Sign in!</button>
+                                {registerSent ?
+                                    <p className="flex mt-5 mx-8 md:text-3xl text-green-600 text-xl font-extralight">Great! Joshua will contact you soon</p>
+                                    :
+                                    <button onClick={showModal} className="flex mt-5 mx-8 md:text-4xl text-2xl font-extralight link">Sign in!</button>
+                                }
                                 <Modal
                                     footer={[
                                         <button onClick={handleCancel}>
