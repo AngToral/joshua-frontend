@@ -17,19 +17,14 @@ const Login = () => {
 
     const [messageApi, contextHolder] = message.useMessage();
 
-    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmitLogin = async (data) => {
         const { email, password } = data
         console.log(email, password)
         setLoading(true)
-        await login({ email, password })
+        // await login({ email, password })
         setLoading(false)
-        messageApi.open({
-            type: 'success',
-            content: "Welcome!",
-        })
-        reset()
         navigate("/")
     }
 
@@ -46,6 +41,7 @@ const Login = () => {
             content: "Your email has been sent successfully",
         })
         reset2()
+        setForgot(false)
     }
 
 
