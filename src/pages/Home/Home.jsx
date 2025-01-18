@@ -8,6 +8,7 @@ import { FaInstagram } from "react-icons/fa";
 import { AiOutlineMail } from "react-icons/ai";
 import { message } from 'antd';
 import { useForm } from "react-hook-form";
+import { sendContactEmail } from '../../apiService/userApi';
 
 const Home = () => {
 
@@ -18,11 +19,13 @@ const Home = () => {
 
     const [messageApi, contextHolder] = message.useMessage();
 
-    const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+
     const onSubmit = async (data) => {
-        console.log(data)
+        const { subjectType, clientName, clientEmail, subject } = data
+        // console.log(subject, subjectType)
         setLoading(true)
-        await sendContactEmail({ clientName, clientEmail, subject })
+        await sendContactEmail({ subjectType, clientName, clientEmail, subject })
         setLoading(false)
         messageApi.open({
             type: 'success',
@@ -30,8 +33,6 @@ const Home = () => {
         })
         reset()
     }
-
-    // console.log(watch("clientName")); // watch input value by passing the name of it
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
