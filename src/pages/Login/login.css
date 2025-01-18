@@ -1,0 +1,14 @@
+.button {
+    background-color: var(--azul-oscuro);
+    border-color: var(--azul-oscuro);
+
+}
+
+.login {
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.forgot:hover {
+    color: var(--azul-oscuro) !important;
+}

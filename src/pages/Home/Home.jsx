@@ -237,7 +237,7 @@ const Home = () => {
                                             Cancel
                                         </button>
                                     ]}
-                                    title="Sign in" open={isModalOpen}>
+                                    title="Sign in" open={isModalOpen} onCancel={handleCancel}>
                                     <form onSubmit={handleSubmit2(onSubmitSignIn)} className='max-w-[300px]'>
                                         <div className="flex flex-col gap-4">
 
