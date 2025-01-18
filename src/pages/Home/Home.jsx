@@ -6,9 +6,9 @@ import { MdWorkspacePremium } from "react-icons/md";
 import { FaTrophy } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { AiOutlineMail } from "react-icons/ai";
-import { message } from 'antd';
+import { Modal, message } from 'antd';
 import { useForm } from "react-hook-form";
-import { sendContactEmail } from '../../apiService/userApi';
+import { sendContactEmail, sendNewAccountEmail } from '../../apiService/userApi';
 
 const Home = () => {
 
@@ -20,10 +20,11 @@ const Home = () => {
     const [messageApi, contextHolder] = message.useMessage();
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { register: register2, handleSubmit: handleSubmit2, reset: reset2, formState: { errors: errors2 } } = useForm();
 
     const onSubmit = async (data) => {
         const { subjectType, clientName, clientEmail, subject } = data
-        // console.log(subject, subjectType)
+        console.log(subjectType, clientName, clientEmail, subject)
         setLoading(true)
         await sendContactEmail({ subjectType, clientName, clientEmail, subject })
         setLoading(false)
@@ -32,6 +33,20 @@ const Home = () => {
             content: "Your message has been sent successfully",
         })
         reset()
+    }
+
+    const onSubmitSignIn = async (data) => {
+        const { clientName, clientLastname, clientEmail, subjectType } = data
+        console.log(clientName, clientLastname, clientEmail, subjectType)
+        setLoading(true)
+        await sendNewAccountEmail({ clientName, clientLastname, clientEmail, subjectType })
+        setLoading(false)
+        messageApi.open({
+            type: 'success',
+            content: "Your message has been sent successfully. Wait until Joshua contacts you",
+        })
+        reset2()
+        setIsModalOpen(false)
     }
 
     const toggleMenu = () => {
@@ -74,6 +89,14 @@ const Home = () => {
         document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
     };
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const showModal = () => {
+        setIsModalOpen(true);
+    };
+    const handleCancel = () => {
+        setIsModalOpen(false);
+    };
+
     return (
         <>
             {contextHolder}
@@ -97,7 +120,7 @@ const Home = () => {
                                         <li><a onClick={scrollToAboutMe} className=''>About me</a></li>
                                         <li><a onClick={scrollToServices}>Services</a></li>
                                         <li><a onClick={scrollToContact}>Contact</a></li>
-                                        <li><a href="#" className=''>Let's start</a></li>
+                                        <li><a onClick={showModal} className=''>Sign in!</a></li>
                                         <li><a href="#" className=''>Login</a></li>
                                     </ul>
                                 }
@@ -114,7 +137,7 @@ const Home = () => {
                                 <a onClick={scrollToAboutMe} className='link'>About me</a>
                                 <a onClick={scrollToServices} className='link'>Services</a>
                                 <a onClick={scrollToContact} className='link'>Contact</a>
-                                <a className='link'>Let's start</a>
+                                <a onClick={showModal} className='link'>Sign in!</a>
                                 <a className='link'>Login</a>
                             </div>
                         }
@@ -171,7 +194,7 @@ const Home = () => {
                     </div>
                 </div>
                 {/* contacto */}
-                <div id='contact' className='flex md:flex-row flex-col h-[500px] bg-joshua-500 h-[810px] md:h-[550px]'>
+                <div id='contact' className='flex md:flex-row flex-col h-[500px] bg-joshua-500 h-[850px] md:h-[550px]'>
                     <div className='contact-bg flex justify-center flex-col md:w-1/2'>
                         <p className='md:text-3xl text-2xl flex items-center ml-10 mt-10'>Contact me!</p>
                         <div className='flex flex-col ml-16 md:mb-10 h-[290px] justify-center gap-2'>
@@ -190,19 +213,58 @@ const Home = () => {
                     <div className="flex flex-col items-center justify-center text-lg md:w-1/2 ">
                         <div className="flex md:justify-start justify-center items-center" >
                             <div className="flex flex-col justify-center items-center">
-                                <p type="text" className="flex mt-10 md:mt-0 mx-8 md:text-3xl text-xl font-extralight">
-                                    If you need more information, or want to subscribe to any of the plans, write to me using this form, and I will be happy to answer you!                                </p>
+
+                                <p className="flex mt-5 mx-8 md:text-3xl text-xl font-extralight">
+                                    Are you clear about it? Subscribe now:
+                                </p>
+                                <button onClick={showModal} className="flex mt-5 mx-8 md:text-4xl text-2xl font-extralight link">Sign in!</button>
+                                <Modal
+                                    footer={[
+                                        <button onClick={handleCancel}>
+                                            Cancel
+                                        </button>
+                                    ]}
+                                    title="Sign in" open={isModalOpen}>
+                                    <form onSubmit={handleSubmit2(onSubmitSignIn)} className='max-w-[300px]'>
+                                        <div className="flex flex-col gap-4">
+
+                                            <input placeholder='Name' {...register2("clientName", { required: true })} className='bg-transparent border-transparent border-b-black border-[1px] font-light mt-5' />
+                                            {errors.clientName && <span className='text-red-400'>This field is required</span>}
+                                            <input placeholder='Lastname' {...register2("clientLastname", { required: true })} className='bg-transparent border-transparent border-b-black border-[1px] font-light' />
+                                            {errors.clientLastname && <span className='text-red-400'>This field is required</span>}
+                                            <input placeholder='Email' {...register2("clientEmail", { required: true })} className='bg-transparent border-transparent border-b-black border-[1px] font-light' />
+                                            {errors.clientEmail && <span className='text-red-400'>This field is required</span>}
+
+                                            <div className='flex'>
+                                                <label className='font-extralight mr-3'>Select a contact type:</label>
+                                                <select {...register2("subjectType")} className='bg-transparent font-extralight'>
+                                                    <option value="Basic">Basic Plan</option>
+                                                    <option value="Plus">Plus Pack</option>
+                                                    <option value="Pro">Pro Pack</option>
+                                                    <option value="Personal">Personal Training</option>
+                                                </select>
+                                            </div>
+                                            <button type='submit'>
+                                                {loading ? "Loading..." : "Ok"}
+                                            </button>
+                                        </div>
+                                    </form>
+                                </Modal>
+
+                                <p type="text" className="flex mt-5 mx-8 md:text-3xl text-xl font-extralight">
+                                    Or if you need more information, write to me using this form. I will be happy to answer you!
+                                </p>
 
                                 <form onSubmit={handleSubmit(onSubmit)}>
                                     <div className="flex flex-col gap-4">
-                                        <div className='flex justify-between mt-6'>
-                                            <label className='font-extralight'>Select a contact type:</label>
-                                            <select {...register("subjectType")} className='bg-transparent font-extralight' placeholder="Lala">
-                                                <option value="info">Information</option>
-                                                <option value="basic">Basic Plan</option>
-                                                <option value="plus">Plus Pack</option>
-                                                <option value="pro">Pro Pack</option>
-                                                <option value="personal">Personal Training</option>
+                                        <div className='flex mt-6'>
+                                            <label className='font-extralight mr-3'>Select a contact type:</label>
+                                            <select {...register("subjectType")} className='bg-transparent font-extralight'>
+                                                <option value="Info">Information</option>
+                                                <option value="Basic">Basic Plan</option>
+                                                <option value="Plus">Plus Pack</option>
+                                                <option value="Pro">Pro Pack</option>
+                                                <option value="Personal">Personal Training</option>
                                             </select>
                                         </div>
                                         <input placeholder='Name' {...register("clientName", { required: true })} className='bg-transparent border-transparent border-b-white border-[1px] font-light' />
