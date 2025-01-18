@@ -69,7 +69,7 @@ const Login = () => {
                                     <div className="flex flex-col gap-4">
 
                                         <input placeholder='Email' {...register2("email", { required: true })} className='bg-transparent border-transparent border-b-black border-[1px] font-light' />
-                                        {errors2.clientEmail && <span className='text-red-400'>This field is required</span>}
+                                        {errors2.email && <span className='text-red-400'>This field is required</span>}
 
                                         <button type='submit' className="text-xl">
                                             {loading ? "Loading..." : "Send"}
