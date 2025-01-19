@@ -74,15 +74,15 @@ const Login = () => {
         <>
             {contextHolder}
             <div className="h-screen">
-                <div className="flex justify-between flex-wrap h-[130px]">
+                <div className="flex justify-between flex-wrap md:h-[130px] h-[100px]">
                     <div className="flex flex-wrap items-center text-xl">
                         <a>
                             <img onClick={handleHome} src="logoCompletoGris.png" alt="logoJoshua" className='m-6 h-20 w-20 cursor-pointer' />
                         </a>
                     </div>
                 </div>
-                <div className="flex justify-center md:flex-row flex-col">
-                    <img className='w-[450px] rounded-xl' src='./J4.jpeg' />
+                <div className="flex justify-center md:flex-row flex-col-reverse items-center">
+                    <img className='md:w-[450px] w-[300px] rounded-xl mb-6' src='./J4.jpeg' />
                     <div className="md:w-[550px] flex justify-center items-center login flex-col">
                         <div className="">
                             <p className='text-2xl mb-6'>Welcome back!</p>
