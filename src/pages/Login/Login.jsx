@@ -5,12 +5,15 @@ import { message } from "antd";
 import { useForm } from "react-hook-form";
 import { forgotPasswordEmail, login } from "../../apiService/userApi";
 import { authContext } from "../../components/context/authContext";
+import { IoEyeOutline } from "react-icons/io5";
+import { IoEyeOffOutline } from "react-icons/io5";
 
 const Login = () => {
 
     const navigate = useNavigate();
     const [forgot, setForgot] = useState(false)
     const [loading, setLoading] = useState(false)
+    const [showPassword, setShowPassword] = useState(false)
 
     function handleHome() {
         navigate("/")
@@ -110,7 +113,26 @@ const Login = () => {
 
                                         <input placeholder='Email' {...register("email", { required: true })} className='bg-transparent border-transparent border-b-black border-[1px] font-light' />
                                         {errors.email && <span className='text-red-400'>This field is required</span>}
-                                        <input type="password" placeholder='Password' {...register("password", { required: true })} className='bg-transparent border-transparent border-b-black border-[1px] font-light mt-5' />
+
+                                        <div className="flex items-end gap-1">
+                                            <input
+                                                type={
+                                                    showPassword ?
+                                                        "text" :
+                                                        "password"
+                                                }
+                                                placeholder='Password' {...register("password", { required: true })} className='w-11/12 bg-transparent border-transparent border-b-black border-[1px] font-light mt-5' />
+
+                                            {showPassword ?
+                                                <button onClick={() => setShowPassword(!showPassword)} >
+                                                    <IoEyeOutline color="#979ca2" />
+                                                </button>
+                                                :
+                                                <button onClick={() => setShowPassword(!showPassword)}>
+                                                    <IoEyeOffOutline color="#979ca2" />
+                                                </button>
+                                            }
+                                        </div>
                                         {errors.password && <span className='text-red-400'>This field is required</span>}
 
                                         <button type='submit' className="text-xl">
