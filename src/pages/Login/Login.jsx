@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./login.css"
 import { useNavigate } from 'react-router-dom';
 import { message } from "antd";
 import { useForm } from "react-hook-form";
 import { forgotPasswordEmail, login } from "../../apiService/userApi";
+import { authContext } from "../../components/context/authContext";
 
 const Login = () => {
 
@@ -16,16 +17,40 @@ const Login = () => {
     }
 
     const [messageApi, contextHolder] = message.useMessage();
+    const { setLogIn } = useContext(authContext)
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmitLogin = async (data) => {
+        console.log('Received values of form: ', data);
         const { email, password } = data
-        console.log(email, password)
+        if (data.email === "" || data.password === "") { }
         setLoading(true)
-        // await login({ email, password })
+        const response = await login(email, password)
+        console.log(response)
         setLoading(false)
-        navigate("/")
+        if (!response.msg) {
+            setLogIn(response) //context
+            navigate('/') //logeado
+        }
+        if (response.msg === "This email is not registered") {
+            messageApi.open({
+                type: 'warning',
+                content: 'This email is not registered'
+            })
+        }
+        if (response.msg === "Email is no longer active") {
+            messageApi.open({
+                type: 'warning',
+                content: 'Email is no longer active'
+            })
+        }
+        if (response.msg === "Wrong password") {
+            messageApi.open({
+                type: 'error',
+                content: 'Wrong password'
+            })
+        }
     }
 
     const { register: register2, handleSubmit: handleSubmit2, reset: reset2, formState: { errors: errors2 } } = useForm();
