@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import './home.css'
 import { BsPersonArmsUp } from "react-icons/bs";
 import { IoStar } from "react-icons/io5";
@@ -10,6 +10,7 @@ import { Modal, message } from 'antd';
 import { useForm } from "react-hook-form";
 import { sendContactEmail, sendNewAccountEmail } from '../../apiService/userApi';
 import { useNavigate } from 'react-router-dom';
+import { authContext } from '../../components/context/authContext';
 
 const Home = () => {
 
@@ -25,6 +26,7 @@ const Home = () => {
     const { register: register2, handleSubmit: handleSubmit2, reset: reset2, formState: { errors: errors2 } } = useForm();
 
     const navigate = useNavigate();
+    const { userId } = useContext(authContext)
 
     const onSubmit = async (data) => {
         const { subjectType, clientName, clientEmail, subject } = data
@@ -106,6 +108,14 @@ const Home = () => {
         navigate("/login")
     }
 
+    const handleProfile = () => {
+        navigate("/login") //cambiar a perfil
+    }
+
+    const handleDashboard = () => {
+        navigate("/login") //cambiar a dashboard
+    }
+
     return (
         <>
             {contextHolder}
@@ -129,8 +139,25 @@ const Home = () => {
                                         <li><a onClick={scrollToAboutMe} className=''>About me</a></li>
                                         <li><a onClick={scrollToServices}>Services</a></li>
                                         <li><a onClick={scrollToContact}>Contact</a></li>
-                                        <li><a onClick={showModal} className=''>Sign in!</a></li>
-                                        <li><a onClick={handleLogin} className=''>Login</a></li>
+                                        {userId ?
+                                            <>
+                                                <li><a onClick={handleProfile} className=''>
+                                                    My profile
+                                                </a></li>
+                                                <li><a onClick={handleDashboard} className=''>
+                                                    Dashboard
+                                                </a></li>
+                                            </>
+                                            :
+                                            <>
+                                                <li><a onClick={showModal} className=''>Sign in!</a></li>
+                                                <li>
+                                                    <a onClick={handleProfile} className=''>
+                                                        Login
+                                                    </a>
+                                                </li>
+                                            </>
+                                        }
                                     </ul>
                                 }
                             </nav>
@@ -146,8 +173,23 @@ const Home = () => {
                                 <a onClick={scrollToAboutMe} className='link'>About me</a>
                                 <a onClick={scrollToServices} className='link'>Services</a>
                                 <a onClick={scrollToContact} className='link'>Contact</a>
-                                <a onClick={showModal} className='link'>Sign in!</a>
-                                <a className='link' onClick={handleLogin}>Login</a>
+                                {userId ?
+                                    <>
+                                        <a onClick={handleProfile} className='link'>
+                                            My profile
+                                        </a>
+                                        <a onClick={handleDashboard} className='link'>
+                                            Dashboard
+                                        </a>
+                                    </>
+                                    :
+                                    <>
+                                        <a onClick={showModal} className='link'>Sign in!</a>
+                                        <a onClick={handleLogin} className='link'>
+                                            Login
+                                        </a>
+                                    </>
+                                }
                             </div>
                         }
                     </div >
