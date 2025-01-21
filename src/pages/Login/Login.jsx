@@ -62,14 +62,22 @@ const Login = () => {
         const { email } = data
         console.log(email)
         setLoading(true)
-        await forgotPasswordEmail({ email })
+        const response = await forgotPasswordEmail({ email })
         setLoading(false)
-        messageApi.open({
-            type: 'success',
-            content: "Your email has been sent successfully",
-        })
-        reset2()
-        setForgot(false)
+        if (!response.msg) {
+            messageApi.open({
+                type: 'success',
+                content: "Your email has been sent successfully",
+            })
+            reset2()
+            setForgot(false)
+        }
+        if (response.msg === "This email is not registered") {
+            messageApi.open({
+                type: 'error',
+                content: "This email is not registered",
+            })
+        }
     }
 
 
