@@ -39,9 +39,9 @@ const SetPassword = () => {
         <>
             {contextHolder}
             <div className="flex justify-center items-center h-screen flex-col">
-                <button onClick={() => navigate('/')}>
-                    <img src="./logoCompletoGris.png" alt="logo-joshua" className='h-80' />
-                </button>
+                <a onClick={() => navigate('/')} className='cursor-pointer'>
+                    <img src="https://res.cloudinary.com/dqvce5mij/image/upload/v1735325545/Gris_ygutmf.png" alt="logo-joshua" className='h-80 mb-5' />
+                </a>
                 <div className="flex flex-col gap-2">
                     <p className="text-4xl mb-6 flex justify-center">Set new password!</p>
                     <form onSubmit={handleSubmit(onSubmitNew)} className='flex flex-col gap-3'
