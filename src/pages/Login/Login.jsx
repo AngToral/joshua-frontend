@@ -34,7 +34,7 @@ const Login = () => {
         setLoading(false)
         if (!response.msg) {
             setLogIn(response) //context
-            navigate('/') //logeado
+            navigate('/dashboard') //logeado
         }
         if (response.msg === "This email is not registered") {
             messageApi.open({
