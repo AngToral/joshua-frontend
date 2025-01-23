@@ -113,7 +113,7 @@ const Home = () => {
     }
 
     const handleDashboard = () => {
-        navigate("/login") //cambiar a dashboard
+        navigate("/dashboard")
     }
 
     return (
