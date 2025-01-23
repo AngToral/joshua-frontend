@@ -48,13 +48,27 @@ export const updateUser = async (id, data) => {
     const token = localStorage.getItem("access_token");
     const response = await fetch(`${baseUrl}/user/${id}`, {
         method: "PUT",
-        body: data,
+        body: JSON.stringify(data),
         headers: {
+            "Content-Type": "application/json",
             "authorization": `Bearer ${token}`,
         },
     });
     const user = await response.json();
     return user;
+};
+
+export const updatePhoto = async (id, data) => {
+    const token = localStorage.getItem("access_token");
+    const response = await fetch(`${baseUrl}/update/${id}`, {
+        method: "PUT",
+        body: data,
+        headers: {
+            "authorization": `Bearer ${token}`,
+        },
+    });
+    const entry = await response.json();
+    return entry;
 };
 
 export const deleteUser = async (id) => {
