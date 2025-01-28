@@ -122,23 +122,23 @@ const Login = () => {
                                         <input placeholder='Email' {...register("email", { required: true })} className='bg-transparent border-transparent border-b-black border-[1px] font-light' />
                                         {errors.email && <span className='text-red-400'>This field is required</span>}
 
-                                        <div className="flex items-end gap-1">
+                                        <div className="flex gap-1 items-center">
                                             <input
                                                 type={
                                                     showPassword ?
                                                         "text" :
                                                         "password"
                                                 }
-                                                placeholder='Password' {...register("password", { required: true })} className='w-11/12 bg-transparent border-transparent border-b-black border-[1px] font-light mt-5' />
+                                                placeholder='Password' {...register("password", { required: true })} className='w-11/12 bg-transparent border-transparent border-b-black border-[1px] font-light' />
 
                                             {showPassword ?
-                                                <button onClick={() => setShowPassword(!showPassword)} >
+                                                <a onClick={() => setShowPassword(!showPassword)} className="cursor-pointer">
                                                     <IoEyeOutline color="#979ca2" />
-                                                </button>
+                                                </a>
                                                 :
-                                                <button onClick={() => setShowPassword(!showPassword)}>
+                                                <a onClick={() => setShowPassword(!showPassword)} className="cursor-pointer">
                                                     <IoEyeOffOutline color="#979ca2" />
-                                                </button>
+                                                </a>
                                             }
                                         </div>
                                         {errors.password && <span className='text-red-400'>This field is required</span>}
