@@ -109,7 +109,7 @@ const Home = () => {
     }
 
     const handleProfile = () => {
-        navigate("/login") //cambiar a perfil
+        navigate("/profile")
     }
 
     const handleDashboard = () => {
