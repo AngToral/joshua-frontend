@@ -9,7 +9,7 @@ export const getUsers = async () => {
     return users;
 };
 
-export const getUseId = async (id) => {
+export const getUserId = async (id) => {
     const token = localStorage.getItem("access_token");
     const response = await fetch(`${baseUrl}/user/${id}`, {
         headers: { "authorization": `Bearer ${token}` }, // ponemos en headers el token generado

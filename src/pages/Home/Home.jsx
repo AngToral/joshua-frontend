@@ -205,7 +205,7 @@ const Home = () => {
                 </div>
                 {/* about */}
                 <div id='aboutMe' className="about-me bg-joshua-50 text-black">
-                    <img className='image-me' src='./J5.png' />
+                    <img className='image-me' src='./J3.jpg' />
                     <div className="flex flex-col px-10 text-about-me py-4">
                         <p className='pb-4 font-bold text-xl'>Meet Joshua, Your Guide to Fitness Success!</p>
                         <p className='pb-4'>A passionate personal trainer dedicated to helping you achieve your fitness goals. Whether you' re looking to lose weight, build strength, improve your overall health, or simply feel better in your own skin, I'm here to guide you every step of the way.</p>

@@ -1,0 +1,15 @@
+.card {
+    border: 1px solid var(--azul-oscuro);
+    background-color: var(--azul-oscuro);
+    padding: 15px;
+    border-radius: 15px;
+}
+
+button {
+    background-color: var(--gris-claro);
+    border: 1px solid var(--gris-claro);
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: var(--azul-oscuro) !important;
+}
