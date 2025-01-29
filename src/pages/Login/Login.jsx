@@ -93,7 +93,7 @@ const Login = () => {
                     </div>
                 </div>
                 <div className="flex justify-center md:flex-row flex-col-reverse items-center">
-                    <img className='md:w-[450px] w-[300px] rounded-xl mb-6' src='./2.jpg' />
+                    <img className='md:w-[450px] w-[300px] rounded-xl mb-6' src='./J2.jpg' />
                     <div className="md:w-[550px] flex justify-center items-center login flex-col">
                         <div className="">
                             <p className='text-2xl mb-6'>Welcome back!</p>

@@ -225,19 +225,19 @@ const Home = () => {
                                 <p className='md:pb-4'>Experience the benefits of one-on-one coaching with me in my studio.</p>
                             </div>
                             <div className='max-w-80 flex flex-col items-center'>
-                                <MdWorkspacePremium className='h-16 md:w-16 h-8 w-8 md:mb-4' />
+                                <MdWorkspacePremium className='md:h-16 md:w-16 h-8 w-8 md:mb-4' />
                                 <p className='md:pb-4'>Plus Pack</p>
                                 <p className='md:pb-4'>You will have all the training videos and Nutritional recommendations.</p>
                             </div>
                         </div>
                         <div className='flex flex-col gap-5'>
                             <div className='max-w-80 flex flex-col items-center'>
-                                <IoStar className='h-16 md:w-16 h-8 w-8 md:mb-4' />
+                                <IoStar className='md:h-16 md:w-16 h-8 w-8 md:mb-4' />
                                 <p className='md:pb-4'>Basic Plan</p>
                                 <p className='md:pb-4'>You will have all my training videos wherever you want to work out.</p>
                             </div>
                             <div className='max-w-80 flex flex-col items-center'>
-                                <FaTrophy className='h-16 md:w-16 h-8 w-8 md:mb-4' />
+                                <FaTrophy className='md:h-16 md:w-16 h-8 w-8 md:mb-4' />
                                 <p className='md:pb-4'>Pro Pack</p>
                                 <p className='md:pb-4'>You will have all the training videos, nutritional recommendations, information about injuries and how to treat them, and stretching.</p>
                             </div>
