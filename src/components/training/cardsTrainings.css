@@ -1,7 +1,7 @@
 .card {
-    border: 1px solid var(--gris);
-    background-color: var(--gris);
+    /* border: 1px solid var(--gris);
+    background-color: var(--gris); */
     padding: 15px;
     border-radius: 15px;
-    color: var(--negro-gris);
+    color: var(--gris-claro);
 }

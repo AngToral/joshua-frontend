@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./login.css"
 import { useNavigate } from 'react-router-dom';
 import { message } from "antd";
@@ -18,6 +18,10 @@ const Login = () => {
     function handleHome() {
         navigate("/")
     }
+
+    useEffect(() => {
+        document.body.style.backgroundColor = "#010a13"
+    }, []);
 
     const [messageApi, contextHolder] = message.useMessage();
     const { setLogIn } = useContext(authContext)
@@ -104,7 +108,7 @@ const Login = () => {
                                 <form onSubmit={handleSubmit2(onSubmitForgot)} className='w-[300px] mt-6'>
                                     <div className="flex flex-col gap-4">
 
-                                        <input placeholder='Email' {...register2("email", { required: true })} className='bg-transparent border-transparent border-b-black border-[1px] font-light' />
+                                        <input placeholder='Email' {...register2("email", { required: true })} className='bg-transparent border-transparent border-b-gray-700 border-[1px] font-light' />
                                         {errors2.email && <span className='text-red-400'>This field is required</span>}
 
                                         <button type='submit' className="text-xl">
@@ -119,7 +123,7 @@ const Login = () => {
                                 <form onSubmit={handleSubmit(onSubmitLogin)} className='w-[300px]'>
                                     <div className="flex flex-col gap-4">
 
-                                        <input placeholder='Email' {...register("email", { required: true })} className='bg-transparent border-transparent border-b-black border-[1px] font-light' />
+                                        <input placeholder='Email' {...register("email", { required: true })} className='bg-transparent border-transparent border-b-gray-700 border-[1px] font-light' />
                                         {errors.email && <span className='text-red-400'>This field is required</span>}
 
                                         <div className="flex gap-1 items-center">
@@ -129,7 +133,7 @@ const Login = () => {
                                                         "text" :
                                                         "password"
                                                 }
-                                                placeholder='Password' {...register("password", { required: true })} className='w-11/12 bg-transparent border-transparent border-b-black border-[1px] font-light' />
+                                                placeholder='Password' {...register("password", { required: true })} className='w-11/12 bg-transparent border-transparent border-b-gray-700 border-[1px] font-light' />
 
                                             {showPassword ?
                                                 <a onClick={() => setShowPassword(!showPassword)} className="cursor-pointer">

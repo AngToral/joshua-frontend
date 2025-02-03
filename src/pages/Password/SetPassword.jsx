@@ -1,5 +1,5 @@
 import { message } from 'antd';
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { updateUser } from '../../apiService/userApi';
 import { useForm } from 'react-hook-form';
@@ -11,6 +11,10 @@ const SetPassword = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false)
     const [showPassword, setShowPassword] = useState(false)
+
+    useEffect(() => {
+        document.body.style.backgroundColor = "#242424"
+    }, []);
 
     const [messageApi, contextHolder] = message.useMessage();
 

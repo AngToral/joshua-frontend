@@ -17,6 +17,7 @@ const Dashboard = () => {
     useEffect(() => {
         getUserLogged();
         getAllVideos();
+        document.body.style.backgroundColor = "black"
     }, []);
 
     function handleHome() {
@@ -61,7 +62,7 @@ const Dashboard = () => {
                 </div>
             </div>
             <div className="flex flex-col items-center">
-                <div className='m-10 flex flex-wrap gap-4'>
+                <div className='m-10 flex justify-center flex-wrap gap-4'>
                     {allTrainings.map(video =>
                         <CardsTrainings
                             key={video._id}

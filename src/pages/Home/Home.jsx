@@ -66,6 +66,10 @@ const Home = () => {
     }, []);
 
     useEffect(() => {
+        document.body.style.backgroundColor = "#545b66"
+    }, []);
+
+    useEffect(() => {
         const handleResize = () => {
             setMobile(window.innerWidth <= 767);
         };
@@ -198,7 +202,7 @@ const Home = () => {
                             <img src="logoCompletoGris.png" alt="logoJoshua" className='h-48 w-48 mt-20 mb-10' />
                         }
                         <p className='font-bold md:text-6xl text-4xl lg:mb-6 mb-4'>Your best version awaits you!</p>
-                        <h1 className='font-bold md:text-4xl text-2xl md:mb-6 mb-4'>I'm Joshua, a professional boxer and personal trainer</h1>
+                        <h1 className='font-bold md:text-4xl text-2xl md:mb-6 mb-4'>I'm Joshua, a boxer and personal trainer</h1>
                         <p className='md:text-2xl text-lg md:mb-6 mb-4'>Discover effective workouts to achieve your fitness goals. Start your transformation today!</p>
                         <button onClick={scrollToContact} className='buttonLink buttonCallToAction'>Start today!</button>
                     </div >
