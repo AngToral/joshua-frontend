@@ -15,8 +15,8 @@ export default {
           400: "#1126a5", //azul real
           500: "#16375f", //azul oscuro - contact Form
           600: "#031730", //azul muy oscuro
-          700: "#010a13", //azul casi negro - footer
-          800: "#242424", //negro gris - fondo defecto - navbar
+          700: "#010a13", //azul casi negro - footer y login
+          800: "#242424", //negro gris - setpassword - navbar
           900: "#ffffffbf" // blanco transparente
         },
       }
