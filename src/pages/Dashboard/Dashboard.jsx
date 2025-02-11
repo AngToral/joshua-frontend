@@ -7,6 +7,7 @@ import { getTrainings } from '../../apiService/trainingApi';
 import CardsTrainings from '../../components/training/cardsTrainings';
 import { useForm } from 'react-hook-form';
 import './dashboard.css'
+import '../Home/home.css'
 
 const Dashboard = () => {
     const [userPic, setUserPic] = useState("")
@@ -103,11 +104,13 @@ const Dashboard = () => {
                             <img onClick={handleHome} src="logoCompletoGris.png" alt="logoJoshua" className='m-6 h-20 w-20 cursor-pointer' />
                         </a>
                     </div>
-                    <div className='flex flex-row gap-4'>
-                        {/* si eres Joshua */}
-                        <p className='cursor-pointer'>Upload video</p>
-                        <p className='cursor-pointer'>Clients</p>
-                    </div>
+                    {userType === "admin" &&
+                        <div className='flex flex-row gap-4'>
+                            {/* si eres Joshua */}
+                            <p className='link'>Upload video</p>
+                            <p className='link'>Clients</p>
+                        </div>
+                    }
                     <div className='flex items-center gap-2 cursor-pointer'>
                         <img src={userPic} alt="profile-pic" className='rounded-full h-12 w-12 object-cover' />
                         <a onClick={handleProfile}>Profile</a>
