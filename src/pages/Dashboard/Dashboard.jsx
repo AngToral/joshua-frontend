@@ -42,6 +42,10 @@ const Dashboard = () => {
         navigate("/profile")
     }
 
+    function handleClients() {
+        navigate("/clients")
+    }
+
     const getUserLogged = async () => {
         if (userId) {
             const user = await getUserId(userId);
@@ -107,8 +111,8 @@ const Dashboard = () => {
                     {userType === "admin" &&
                         <div className='flex flex-row gap-4'>
                             {/* si eres Joshua */}
-                            <p className='link'>Upload video</p>
-                            <p className='link'>Clients</p>
+                            <button className='link'>Upload video</button>
+                            <button onClick={handleClients} className='link'>Clients</button>
                         </div>
                     }
                     <div className='flex items-center gap-2 cursor-pointer'>
@@ -140,6 +144,7 @@ const Dashboard = () => {
                         }
                     </div>
                 </div>
+                {/* modal de upload video */}
             </div>
         </>
     )
