@@ -75,6 +75,8 @@ const Dashboard = () => {
         const newList = [...allTrainings];
         if (data.categorySearch === "All") {
             setFiltering([]);
+            setLoading(false);
+            return;
         }
         if (data) {
             setLoading(true)
@@ -82,14 +84,14 @@ const Dashboard = () => {
             if (filteredList.length) {
                 setFiltering(filteredList);
             }
-            if (filteredList.length === 0) {
+            else {
                 messageApi.error("No videos found");
+                setFiltering([]);
                 getAllVideos();
             }
             setLoading(false);
         }
     }
-
 
     return (
         <>
