@@ -141,6 +141,7 @@ const Dashboard = () => {
                                         key={video._id}
                                         video={video}
                                         refresh={refresh}
+                                        userType={userType}
                                     />
                                 ))
                         }
