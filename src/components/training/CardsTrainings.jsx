@@ -1,8 +1,22 @@
+
 import './cardsTrainings.css'
+import { FaRegEdit } from "react-icons/fa";
+import { RiDeleteBinLine } from "react-icons/ri";
+import { Popover, PopoverContent, PopoverHandler } from '@material-tailwind/react';
+import { FaExclamationTriangle } from "react-icons/fa";
+import { deleteTraining } from '../../apiService/trainingApi';
+import { message } from 'antd';
 
-const CardsTrainings = ({ video }) => {
 
 
+const CardsTrainings = ({ video, refresh }) => {
+
+    const onDelete = async (id) => {
+        console.log("elimino id: ", id)
+        await deleteTraining(id)
+        refresh(prev => !prev);
+        message.success("Video deleted!")
+    }
 
     return (
         <>
@@ -11,6 +25,20 @@ const CardsTrainings = ({ video }) => {
                 <p className='text-xl font-bold mt-2'>{video.tittle}</p>
                 <p>Category: {video.category}</p>
                 <p>{video.description}</p>
+                <div className='flex justify-end gap-4'>
+                    <button ><FaRegEdit className='h-5 w-5' /></button>
+                    <Popover>
+                        <PopoverHandler>
+                            <button ><RiDeleteBinLine className='h-5 w-5' /></button>
+                        </PopoverHandler>
+                        <PopoverContent className="flex flex-col bg-joshua-50 p-3">
+                            <div className="flex text-black gap-2 items-center">
+                                <FaExclamationTriangle className='h-5 w-5 text-red-600' /> Are you sure you want to delete this?
+                            </div>
+                            <button className="text-black mt-3 font-bold" onClick={() => onDelete(video._id)}>Yes!</button>
+                        </PopoverContent>
+                    </Popover>
+                </div>
             </div>
         </>
     )

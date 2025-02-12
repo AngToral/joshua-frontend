@@ -47,7 +47,7 @@ export const updateTraining = async (id, data) => {
 
 export const deleteTraining = async (id) => {
     const token = localStorage.getItem("access_token")
-    const response = await fetch(`${baseUrl}/trainings/${id}`, {
+    const response = await fetch(`${baseUrl}/training/${id}`, {
         method: 'DELETE',
         headers: { "authorization": `Bearer ${token}` }
     })

@@ -16,6 +16,7 @@ const Dashboard = () => {
     const [allTrainings, setAllTrainings] = useState([]);
     const [filtering, setFiltering] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [dummy, refresh] = useState(false);
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -32,7 +33,7 @@ const Dashboard = () => {
         if (userPlan || userType) {
             getAllVideos();
         }
-    }, [userPlan, userType]);
+    }, [userPlan, userType, dummy]);
 
     function handleHome() {
         navigate("/")
@@ -139,6 +140,7 @@ const Dashboard = () => {
                                     <CardsTrainings
                                         key={video._id}
                                         video={video}
+                                        refresh={refresh}
                                     />
                                 ))
                         }
