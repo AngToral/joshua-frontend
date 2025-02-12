@@ -8,6 +8,7 @@ import CardsTrainings from '../../components/training/cardsTrainings';
 import { useForm } from 'react-hook-form';
 import './dashboard.css'
 import '../Home/home.css'
+import ModalVideo from '../../components/video/ModalVideo';
 
 const Dashboard = () => {
     const [userPic, setUserPic] = useState("")
@@ -17,6 +18,8 @@ const Dashboard = () => {
     const [filtering, setFiltering] = useState([]);
     const [loading, setLoading] = useState(false);
     const [dummy, refresh] = useState(false);
+    const [open, setOpen] = useState(false);
+    const [selectedVideo, setSelectedVideo] = useState(null);
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -55,6 +58,11 @@ const Dashboard = () => {
             setUserType(user.profileType)
         }
     };
+
+    const onCancel = () => {
+        setOpen(false)
+        setSelectedVideo(null)
+    }
 
     const getAllVideos = async () => {
         setLoading(true)
@@ -142,12 +150,21 @@ const Dashboard = () => {
                                         video={video}
                                         refresh={refresh}
                                         userType={userType}
+                                        visible={setOpen}
+                                        videoId={setSelectedVideo}
                                     />
                                 ))
                         }
                     </div>
                 </div>
                 {/* modal de upload video */}
+                {/* modal de editar video */}
+                <ModalVideo
+                    visible={open}
+                    onCancel={onCancel}
+                    refresh={refresh}
+                    videoId={selectedVideo}
+                />
             </div>
         </>
     )

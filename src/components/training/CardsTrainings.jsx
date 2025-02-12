@@ -9,7 +9,7 @@ import { message } from 'antd';
 
 
 
-const CardsTrainings = ({ video, refresh, userType }) => {
+const CardsTrainings = ({ video, refresh, userType, videoId, visible }) => {
 
 
 
@@ -18,6 +18,12 @@ const CardsTrainings = ({ video, refresh, userType }) => {
         await deleteTraining(id)
         refresh(prev => !prev);
         message.success("Video deleted!")
+    }
+
+    const onEdit = async (id) => {
+        console.log("edito id: ", id)
+        videoId(prev => id)
+        visible(prev => !prev);
     }
 
     return (
@@ -29,10 +35,10 @@ const CardsTrainings = ({ video, refresh, userType }) => {
                 <p>{video.description}</p>
                 {userType === "admin" ?
                     <div className='flex justify-end gap-4'>
-                        <button ><FaRegEdit className='h-5 w-5' /> </button>
+                        <button onClick={() => onEdit(video._id)}><FaRegEdit className='h-5 w-5' /> </button>
                         <Popover>
                             <PopoverHandler>
-                                <button ><RiDeleteBinLine className='h-5 w-5' /></button>
+                                <button><RiDeleteBinLine className='h-5 w-5' /></button>
                             </PopoverHandler>
                             <PopoverContent className="flex flex-col bg-joshua-50 p-3">
                                 <div className="flex text-black gap-2 items-center">
@@ -42,8 +48,7 @@ const CardsTrainings = ({ video, refresh, userType }) => {
                             </PopoverContent>
                         </Popover>
                     </div>
-                    : null
-                }
+                    : null}
             </div>
         </>
     )

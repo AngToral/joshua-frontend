@@ -1,0 +1,21 @@
+div {
+
+    &.ant-modal-content {
+        // background-color: var(--gris) !important;
+        background-image: url('./public/gloves.jpg') !important;
+        background-color: rgba(0, 0, 0, 0.4) !important;
+        background-blend-mode: darken !important;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        color: white;
+    }
+
+    &.ant-modal-header {
+        background-color: transparent !important;
+    }
+
+    &.ant-modal-title {
+        color: white !important;
+    }
+}

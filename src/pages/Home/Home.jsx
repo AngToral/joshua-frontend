@@ -287,7 +287,7 @@ const Home = () => {
                                     <form onSubmit={handleSubmit2(onSubmitSignIn)} className='max-w-[300px]'>
                                         <div className="flex flex-col gap-4">
 
-                                            <input placeholder='Name' {...register2("clientName", { required: true })} className='bg-transparent border-transparent border-b-black border-[1px] font-light mt-5' />
+                                            <input placeholder='Name' {...register2("clientName", { required: true })} className='text-white bg-transparent border-transparent border-b-black border-[1px] font-light mt-5' />
                                             {errors.clientName && <span className='text-red-400'>This field is required</span>}
                                             <input placeholder='Lastname' {...register2("clientLastname", { required: true })} className='bg-transparent border-transparent border-b-black border-[1px] font-light' />
                                             {errors.clientLastname && <span className='text-red-400'>This field is required</span>}
@@ -295,7 +295,7 @@ const Home = () => {
                                             {errors.clientEmail && <span className='text-red-400'>This field is required</span>}
 
                                             <div className='flex'>
-                                                <label className='font-extralight mr-3'>Select a contact type:</label>
+                                                <label className='font-light mr-3'>Select a contact type:</label>
                                                 <select {...register2("subjectType")} className='bg-transparent font-extralight'>
                                                     <option value="Basic">Basic Plan</option>
                                                     <option value="Plus">Plus Pack</option>
