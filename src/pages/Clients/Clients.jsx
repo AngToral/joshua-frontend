@@ -1,13 +1,60 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import { getUsers } from '../../apiService/userApi';
+import CardsTrainings from '../../components/training/cardsTrainings';
+import CardsClients from '../../components/clients/cardsClients';
 
 const Clients = () => {
 
+    const [allClients, setAllClients] = useState([]);
+
+    const navigate = useNavigate();
+
     useEffect(() => {
-        document.body.style.backgroundColor = "#545b66"
+        document.body.style.backgroundColor = "#031730";
+        getAllClients();
     }, []);
 
+    function handleHome() {
+        navigate("/")
+    }
+
+    function handleDashboard() {
+        navigate("/dashboard")
+    }
+
+    const getAllClients = async () => {
+        const response = await getUsers();
+        const notRemoved = response.filter((client) => !client.removeAt);
+        const notAdmin = notRemoved.filter((client) => client.profileType !== "admin");
+        if (response.length) setAllClients(notAdmin);
+    }
+
     return (
-        <div>Clients</div>
+        <>
+            <div className="h-screen">
+                <div className="flex justify-around items-center flex-wrap md:h-[130px] h-[100px] text-xl">
+                    <div className="flex items-center">
+                        <a>
+                            <img onClick={handleHome} src="logoCompletoGris.png" alt="logoJoshua" className='m-6 h-20 w-20 cursor-pointer' />
+                        </a>
+                    </div>
+                    <div className='flex items-center gap-2 cursor-pointer'>
+                        <a onClick={handleDashboard}>Dashboard</a>
+                    </div>
+                </div>
+                <div className="flex flex-col">
+                    <div className='m-10 flex flex-wrap justify-center flex-wrap gap-10'>
+                        {allClients.map(client =>
+                            <CardsClients
+                                key={client._id}
+                                client={client}
+                            />
+                        )}
+                    </div>
+                </div>
+            </div>
+        </>
     )
 }
 
