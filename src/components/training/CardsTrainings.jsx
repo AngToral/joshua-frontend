@@ -11,8 +11,6 @@ import { message } from 'antd';
 
 const CardsTrainings = ({ video, refresh, userType, videoId, visible }) => {
 
-
-
     const onDelete = async (id) => {
         console.log("elimino id: ", id)
         await deleteTraining(id)

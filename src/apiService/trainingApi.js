@@ -20,7 +20,7 @@ export const getTrainingId = async (id) => {
 
 export const addTraining = async (data) => {
     const token = localStorage.getItem("access_token");
-    const response = await fetch(`${baseUrl}/training/register`, {
+    const response = await fetch(`${baseUrl}/training/addtraining`, {
         method: "POST",
         body: JSON.stringify(data),
         headers: {

@@ -120,7 +120,7 @@ const Dashboard = () => {
                     {userType === "admin" &&
                         <div className='flex flex-row gap-4'>
                             {/* si eres Joshua */}
-                            <button className='link'>Upload video</button>
+                            <button className='link' onClick={() => setOpen(!open)}>Upload video</button>
                             <button onClick={handleClients} className='link'>Clients</button>
                         </div>
                     }
