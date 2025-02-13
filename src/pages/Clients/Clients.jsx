@@ -23,6 +23,10 @@ const Clients = () => {
         navigate("/dashboard")
     }
 
+    function handleProfile() {
+        navigate("/profile")
+    }
+
     const getAllClients = async () => {
         const response = await getUsers();
         const notRemoved = response.filter((client) => !client.removeAt);
@@ -39,8 +43,11 @@ const Clients = () => {
                             <img onClick={handleHome} src="logoCompletoGris.png" alt="logoJoshua" className='m-6 h-20 w-20 cursor-pointer' />
                         </a>
                     </div>
+                    <div className='flex flex-row gap-4'>
+                        <button onClick={handleDashboard}>Dashboard</button>
+                    </div>
                     <div className='flex items-center gap-2 cursor-pointer'>
-                        <a onClick={handleDashboard}>Dashboard</a>
+                        <button onClick={handleProfile}>Profile</button>
                     </div>
                 </div>
                 <div className="flex flex-col">
