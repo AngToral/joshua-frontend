@@ -3,12 +3,16 @@ import { RiDeleteBinLine } from "react-icons/ri"
 import './cardsClients.css'
 import { deleteUser } from "../../apiService/userApi"
 import { message } from "antd"
-import { Popover, PopoverContent, PopoverHandler } from "@material-tailwind/react"
+import { Popover, PopoverContent, PopoverHandler, button } from "@material-tailwind/react"
 import { useForm } from "react-hook-form"
+import { useState } from "react"
+import { FaRegCircleCheck } from "react-icons/fa6";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 const CardsClients = ({ client, refresh, clientId, visible }) => {
 
     const { register, handleSubmit, setValue, reset, formState: { errors } } = useForm();
+    const [inputAble, setInputAble] = useState(true);
 
     const onDelete = async (id) => {
         console.log("elimino id: ", id)
@@ -17,10 +21,9 @@ const CardsClients = ({ client, refresh, clientId, visible }) => {
         message.success("Client deleted!")
     }
 
-    const onEdit = async (id) => {
+    const onEdit = (id) => {
         console.log("edito id: ", id)
-        clientId(prev => id)
-        visible(prev => !prev);
+        setInputAble(!inputAble);
     }
 
     return (
@@ -30,7 +33,9 @@ const CardsClients = ({ client, refresh, clientId, visible }) => {
                     <div className="flex flex-col gap-4 mt-4 items-center">
                         <img className="rounded-full md:h-28 md:w-28 h-[85px] w-[85px] object-cover border-grey-500 border-2" src={client.profilePic} />
                         <div className="flex gap-4">
-                            <button onClick={() => onEdit(client._id)}><FaRegEdit className='h-5 w-5' /></button>
+                            <button onClick={() => onEdit(client._id)}>
+                                {!inputAble ? <IoMdArrowRoundBack className='h-5 w-5' /> : <FaRegEdit className='h-5 w-5' />}
+                            </button>
                             <Popover>
                                 <PopoverHandler>
                                     <button><RiDeleteBinLine className='h-5 w-5' /></button>
@@ -42,21 +47,24 @@ const CardsClients = ({ client, refresh, clientId, visible }) => {
                                     <button className="text-black mt-3 font-bold" onClick={() => onDelete(client._id)}>Yes!</button>
                                 </PopoverContent>
                             </Popover>
+                            {!inputAble ?
+                                <button><FaRegCircleCheck className='h-5 w-5' /></button>
+                                : null}
                         </div>
                     </div>
                     <div className="flex flex-col">
                         <form>
                             <p><strong>Name: </strong>
-                                <input disabled value={" " + client.name} {...register("name", { required: true })} className='bg-transparent border-transparent border-[1px] font-light' />
+                                <input disabled={inputAble} value={" " + client.name} {...register("name", { required: true })} className={inputAble ? 'bg-transparent border-transparent border-[1px] font-light' : 'rounded-lg border-[1px] font-light'} />
                             </p>
                             <p><strong>Lastname: </strong>
-                                <input disabled value={" " + client.lastname} {...register("lastname", { required: true })} className='bg-transparent border-transparent border-[1px] font-light' />
+                                <input disabled={inputAble} value={" " + client.lastname} {...register("lastname", { required: true })} className={inputAble ? 'bg-transparent border-transparent border-[1px] font-light' : 'rounded-lg border-[1px] font-light'} />
                             </p>
                             <p><strong>Email: </strong>
-                                <input disabled value={" " + client.email} {...register("email", { required: true })} className='bg-transparent border-transparent border-[1px] font-light' />
+                                <input disabled={inputAble} value={" " + client.email} {...register("email", { required: true })} className={inputAble ? 'bg-transparent border-transparent border-[1px] font-light' : 'rounded-lg border-[1px] font-light'} />
                             </p>
                             <p><strong>Plan: </strong>
-                                <input disabled value={" " + client.plan} {...register("plan", { required: true })} className='bg-transparent border-transparent border-[1px] font-light' />
+                                <input disabled={inputAble} value={" " + client.plan} {...register("plan", { required: true })} className={inputAble ? 'bg-transparent border-transparent border-[1px] font-light' : 'rounded-lg border-[1px] font-light'} />
                             </p>
                             <p><strong>Status: </strong>
                                 {client.status === "active" ? "🟢" : "🔴"}
