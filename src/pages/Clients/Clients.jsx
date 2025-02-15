@@ -8,6 +8,8 @@ const Clients = () => {
 
     const [allClients, setAllClients] = useState([]);
     const [dummy, refresh] = useState(false);
+    const [open, setOpen] = useState(false);
+    const [selectedClient, setSelectedClient] = useState(null);
 
     const navigate = useNavigate();
 
@@ -59,6 +61,8 @@ const Clients = () => {
                                 key={client._id}
                                 client={client}
                                 refresh={refresh}
+                                clientId={selectedClient}
+                                visible={open}
                             />
                         )}
                     </div>
