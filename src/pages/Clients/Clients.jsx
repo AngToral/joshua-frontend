@@ -7,13 +7,14 @@ import CardsClients from '../../components/clients/cardsClients';
 const Clients = () => {
 
     const [allClients, setAllClients] = useState([]);
+    const [dummy, refresh] = useState(false);
 
     const navigate = useNavigate();
 
     useEffect(() => {
         document.body.style.backgroundColor = "#031730";
         getAllClients();
-    }, []);
+    }, [dummy]);
 
     function handleHome() {
         navigate("/")
@@ -44,6 +45,7 @@ const Clients = () => {
                         </a>
                     </div>
                     <div className='flex flex-row gap-4'>
+                        <button onClick={handleDashboard}>New client</button>
                         <button onClick={handleDashboard}>Dashboard</button>
                     </div>
                     <div className='flex items-center gap-2 cursor-pointer'>
@@ -56,6 +58,7 @@ const Clients = () => {
                             <CardsClients
                                 key={client._id}
                                 client={client}
+                                refresh={refresh}
                             />
                         )}
                     </div>

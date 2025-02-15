@@ -68,18 +68,22 @@ const ModalVideo = ({ visible, onCancel, refresh, videoId }) => {
                 <form onSubmit={handleSubmit(onSubmitEditVideo)} className='max-w-[300px]'>
                     {loading ? <div className='flex justify-center'><div className='loader'></div></div> :
                         <div className="flex flex-col gap-4">
-                            <input placeholder='URL' {...register("url")} className='text-white bg-transparent border-transparent border-b-black border-[1px] font-light mt-5' />
-                            <input placeholder='Tittle' {...register("tittle")} className='bg-transparent border-transparent border-b-black border-[1px] font-light' />
-                            <input placeholder='Description' {...register("description")} className='bg-transparent border-transparent border-b-black border-[1px] font-light' />
+                            <input placeholder='URL' {...register("url", { required: true })} className='text-white bg-transparent border-transparent border-b-black border-[1px] font-light mt-5' />
+                            {errors.url && <span className='text-red-400'>This field is required</span>}
+                            <input placeholder='Tittle' {...register("tittle", { required: true })} className='bg-transparent border-transparent border-b-black border-[1px] font-light' />
+                            {errors.tittle && <span className='text-red-400'>This field is required</span>}
+                            <input placeholder='Description' {...register("description", { required: true })} className='bg-transparent border-transparent border-b-black border-[1px] font-light' />
+                            {errors.description && <span className='text-red-400'>This field is required</span>}
                             <div className='flex'>
                                 <label className='font-light mr-3'>Select a category:</label>
-                                <select {...register("category")} className='bg-transparent font-extralight'>
+                                <select {...register("category", { required: true })} className='bg-transparent font-extralight'>
                                     <option value="Cardio">Cardio</option>
                                     <option value="Boxing">Boxing</option>
                                     <option value="Nutrition">Nutrition</option>
                                     <option value="Injuries">Injuries</option>
                                     <option value="Stretching">Stretching</option>
                                 </select>
+                                {errors.category && <span className='text-red-400'>This field is required</span>}
                             </div>
                             <button type='submit'>
                                 {videoId ? "Edit" : "Create"}

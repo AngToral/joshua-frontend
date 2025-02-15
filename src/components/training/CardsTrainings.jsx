@@ -7,8 +7,6 @@ import { FaExclamationTriangle } from "react-icons/fa";
 import { deleteTraining } from '../../apiService/trainingApi';
 import { message } from 'antd';
 
-
-
 const CardsTrainings = ({ video, refresh, userType, videoId, visible }) => {
 
     const onDelete = async (id) => {

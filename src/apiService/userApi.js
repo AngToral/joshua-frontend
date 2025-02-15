@@ -60,7 +60,7 @@ export const updateUser = async (id, data) => {
 
 export const updatePhoto = async (id, data) => {
     const token = localStorage.getItem("access_token");
-    const response = await fetch(`${baseUrl}/update/${id}`, {
+    const response = await fetch(`${baseUrl}/user/update/${id}`, {
         method: "PUT",
         body: data,
         headers: {
@@ -73,7 +73,7 @@ export const updatePhoto = async (id, data) => {
 
 export const deleteUser = async (id) => {
     const token = localStorage.getItem("access_token")
-    const response = await fetch(`${baseUrl}/users/${id}`, {
+    const response = await fetch(`${baseUrl}/user/${id}`, {
         method: 'DELETE',
         headers: { "authorization": `Bearer ${token}` }
     })

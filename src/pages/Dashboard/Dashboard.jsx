@@ -157,8 +157,7 @@ const Dashboard = () => {
                         }
                     </div>
                 </div>
-                {/* modal de upload video */}
-                {/* modal de editar video */}
+                {/* modal de upload/editar video */}
                 <ModalVideo
                     visible={open}
                     onCancel={onCancel}
