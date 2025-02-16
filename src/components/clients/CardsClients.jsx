@@ -9,6 +9,8 @@ import { useEffect, useState } from "react"
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { IoMdArrowRoundBack } from "react-icons/io";
 
+const VALID_PLANS = ['Plus', 'Pro', 'Basic'];
+
 const CardsClients = ({ client, refresh, clientId, visible }) => {
 
     const { register, handleSubmit, setValue, reset, formState: { errors } } = useForm({
@@ -80,16 +82,17 @@ const CardsClients = ({ client, refresh, clientId, visible }) => {
                     <form onSubmit={handleSubmit(onSubmit)} >
                         <div className="flex flex-col">
                             <p><strong>Name: </strong>
-                                <input disabled={inputAble} {...register("name", { required: true })} className={inputAble ? 'bg-transparent border-transparent border-[1px] font-light' : 'rounded-lg border-[1px] font-light'} />
+                                <input disabled={inputAble} {...register("name", { required: true })} className={inputAble ? 'bg-transparent border-transparent border-[1px] font-light w-[200px]' : 'rounded-lg border-[1px] font-light px-2 w-[240px]'} />
                             </p>
                             <p><strong>Lastname: </strong>
-                                <input disabled={inputAble} {...register("lastname", { required: true })} className={inputAble ? 'bg-transparent border-transparent border-[1px] font-light' : 'rounded-lg border-[1px] font-light'} />
+                                <input disabled={inputAble} {...register("lastname", { required: true })} className={inputAble ? 'bg-transparent border-transparent border-[1px] font-light w-[200px]' : 'rounded-lg border-[1px] font-light px-2 w-[240px]'} />
                             </p>
                             <p><strong>Email: </strong>
-                                <input disabled={inputAble} {...register("email", { required: true })} className={inputAble ? 'bg-transparent border-transparent border-[1px] font-light' : 'rounded-lg border-[1px] font-light'} />
+                                <input disabled={inputAble} {...register("email", { required: true })} className={inputAble ? 'bg-transparent border-transparent border-[1px] font-light w-[200px]' : 'rounded-lg border-[1px] font-light px-2 w-[240px]'} />
                             </p>
                             <p><strong>Plan: </strong>
-                                <input disabled={inputAble} {...register("plan", { required: true })} className={inputAble ? 'bg-transparent border-transparent border-[1px] font-light' : 'rounded-lg border-[1px] font-light'} />
+                                <input disabled={inputAble} {...register("plan", { required: true, validate: value => VALID_PLANS.includes(value) })} className={inputAble ? 'bg-transparent border-transparent border-[1px] font-light' : 'rounded-lg border-[1px] font-light px-2'} />
+                                {errors.plan && <span className='text-red-400 flex flex-col'>Invalid typo. Most be "Basic", "Pro" or "Plus".</span>}
                             </p>
                             <p><strong>Status: </strong>
                                 {client.status === "active" ? "🟢" : "🔴"}
