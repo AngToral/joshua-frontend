@@ -66,7 +66,8 @@ const Clients = () => {
                     info.name.toLowerCase().includes(term) ||
                     info.lastname.toLowerCase().includes(term) ||
                     info.email.toLowerCase().includes(term) ||
-                    info.plan.toLowerCase().includes(term)
+                    info.plan.toLowerCase().includes(term) ||
+                    info.status.toLowerCase() === term
                 )
             })
             if (filteredData.length !== 0) return setFiltering(filteredData);
@@ -101,7 +102,7 @@ const Clients = () => {
                 </div>
                 <div className="flex justify-center">
                     <Search className="w-[320px]"
-                        placeholder="Name, lastname, email or plan"
+                        placeholder="Any campus"
                         allowClear
                         enterButton="Search"
                         onSearch={onSearch}
