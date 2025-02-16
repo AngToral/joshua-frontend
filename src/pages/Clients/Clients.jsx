@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { getUsers } from '../../apiService/userApi';
-import CardsTrainings from '../../components/training/cardsTrainings';
 import CardsClients from '../../components/clients/cardsClients';
 
 const Clients = () => {

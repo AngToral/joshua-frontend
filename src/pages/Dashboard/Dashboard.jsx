@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { authContext } from '../../components/context/authContext';
 import { getUserId } from '../../apiService/userApi';
 import { getTrainings } from '../../apiService/trainingApi';
-import CardsTrainings from '../../components/training/cardsTrainings';
+import CardsTrainings from '../../components/training/CardsTrainings';
 import { useForm } from 'react-hook-form';
 import './dashboard.css'
 import '../Home/home.css'

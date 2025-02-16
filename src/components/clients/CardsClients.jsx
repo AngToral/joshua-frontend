@@ -13,6 +13,8 @@ const CardsClients = ({ client, refresh, clientId, visible }) => {
 
     const { register, handleSubmit, setValue, reset, formState: { errors } } = useForm();
     const [inputAble, setInputAble] = useState(true);
+    const [selectedClient, setSelectedClient] = useState(null);
+
 
     const onDelete = async (id) => {
         console.log("elimino id: ", id)
@@ -23,6 +25,12 @@ const CardsClients = ({ client, refresh, clientId, visible }) => {
 
     const onEdit = (id) => {
         console.log("edito id: ", id)
+        setInputAble(!inputAble);
+        setSelectedClient(id);
+    }
+
+    const onSubmit = async (data) => {
+        console.log(data)
         setInputAble(!inputAble);
     }
 
@@ -47,13 +55,10 @@ const CardsClients = ({ client, refresh, clientId, visible }) => {
                                     <button className="text-black mt-3 font-bold" onClick={() => onDelete(client._id)}>Yes!</button>
                                 </PopoverContent>
                             </Popover>
-                            {!inputAble ?
-                                <button><FaRegCircleCheck className='h-5 w-5' /></button>
-                                : null}
                         </div>
                     </div>
-                    <div className="flex flex-col">
-                        <form>
+                    <form onSubmit={handleSubmit(onSubmit)} >
+                        <div className="flex flex-col">
                             <p><strong>Name: </strong>
                                 <input disabled={inputAble} value={" " + client.name} {...register("name", { required: true })} className={inputAble ? 'bg-transparent border-transparent border-[1px] font-light' : 'rounded-lg border-[1px] font-light'} />
                             </p>
@@ -70,10 +75,13 @@ const CardsClients = ({ client, refresh, clientId, visible }) => {
                                 {client.status === "active" ? "🟢" : "🔴"}
                                 <input disabled value={" " + client.status} {...register("status", { required: true })} className='bg-transparent border-transparent border-[1px] font-light' />
                             </p>
-                        </form>
-                    </div>
+                            {!inputAble ?
+                                <button className="flex justify-end" type='submit'><FaRegCircleCheck className='h-5 w-5' /></button>
+                                : null}
+                        </div>
+                    </form>
                 </div>
-            </div>
+            </div >
         </>
     )
 }
