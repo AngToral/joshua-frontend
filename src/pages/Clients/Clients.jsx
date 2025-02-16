@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { getUsers } from '../../apiService/userApi';
+import { getUserId, getUsers } from '../../apiService/userApi';
 import CardsClients from '../../components/clients/cardsClients';
 import '../Dashboard/dashboard.css'
+import { authContext } from '../../components/context/authContext';
 
 const Clients = () => {
 
@@ -11,12 +12,22 @@ const Clients = () => {
     const [open, setOpen] = useState(false);
     const [selectedClient, setSelectedClient] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [userPic, setUserPic] = useState("")
 
     const navigate = useNavigate();
+    const { userId } = useContext(authContext)
+
+    const getUserLogged = async () => {
+        if (userId) {
+            const user = await getUserId(userId);
+            setUserPic(user.profilePic)
+        }
+    };
 
     useEffect(() => {
         document.body.style.backgroundColor = "#031730";
         getAllClients();
+        getUserLogged();
     }, [dummy]);
 
     function handleHome() {
@@ -54,6 +65,7 @@ const Clients = () => {
                         <button onClick={handleDashboard}>Dashboard</button>
                     </div>
                     <div className='flex items-center gap-2 cursor-pointer'>
+                        <img src={userPic} alt="profile-pic" className='rounded-full h-12 w-12 object-cover' />
                         <button onClick={handleProfile}>Profile</button>
                     </div>
                 </div>
