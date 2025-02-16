@@ -1,6 +1,7 @@
 import { FaExclamationTriangle, FaRegEdit } from "react-icons/fa"
 import { RiDeleteBinLine } from "react-icons/ri"
 import './cardsClients.css'
+import '../../pages/Dashboard/dashboard.css'
 import { deleteUser, updateUser } from "../../apiService/userApi"
 import { message } from "antd"
 import { Popover, PopoverContent, PopoverHandler, button } from "@material-tailwind/react"
@@ -34,7 +35,7 @@ const CardsClients = ({ client, refresh, clientId, visible }) => {
 
     const [inputAble, setInputAble] = useState(true);
     const [selectedClient, setSelectedClient] = useState(null);
-    const [messageApi, contextHolder] = message.useMessage();
+    const [loading, setLoading] = useState(false);
 
     const onDelete = async (id) => {
         console.log("elimino id: ", id)
@@ -50,10 +51,12 @@ const CardsClients = ({ client, refresh, clientId, visible }) => {
     }
 
     const onSubmit = async (data) => {
+        setLoading(true)
         console.log(data)
         setInputAble(!inputAble);
         await updateUser(selectedClient, data)
         message.success("Client edited successfully!")
+        setLoading(false)
     }
 
     return (
@@ -98,7 +101,8 @@ const CardsClients = ({ client, refresh, clientId, visible }) => {
                                 {client.status === "active" ? "🟢 " : "🔴 "}
                                 <input disabled value={" " + client.status} {...register("status", { required: true })} className='bg-transparent border-transparent border-[1px] font-light' />
                             </p>
-                            {!inputAble &&
+                            {loading ? <div className="flex justify-end"><div className="loader"></div></div> :
+                                !inputAble &&
                                 <button className="flex justify-end" type='submit'><FaRegCircleCheck className='h-5 w-5' /></button>
                             }
                         </div>

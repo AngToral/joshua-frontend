@@ -129,21 +129,25 @@ const Dashboard = () => {
                         <a onClick={handleProfile}>Profile</a>
                     </div>
                 </div>
-                <form className='flex justify-center' onChange={handleSubmit(onSubmitSearch)}>
-                    <select name="Categories" className='h-10 w-40 p-2 rounded-lg bg-gray-800' {...register("categorySearch")} >
-                        <option value="All">All</option>
-                        <option value="Cardio">Cardio</option>
-                        <option value="Boxing">Boxing</option>
-                        <option value="GYM">GYM</option>
-                        <option value="Nutrition">Nutrition</option>
-                        <option value="Injuries">Injuries</option>
-                        <option value="Stretching">Stretching</option>
-                    </select>
-                </form>
+                {
+                    loading ?
+                        <div className='h-screen flex justify-center items-center'><div className='loader'></div></div>
+                        :
+                        <form className='flex justify-center' onChange={handleSubmit(onSubmitSearch)}>
+                            <select name="Categories" className='h-10 w-40 p-2 rounded-lg bg-gray-800' {...register("categorySearch")} >
+                                <option value="All">All</option>
+                                <option value="Cardio">Cardio</option>
+                                <option value="Boxing">Boxing</option>
+                                <option value="GYM">GYM</option>
+                                <option value="Nutrition">Nutrition</option>
+                                <option value="Injuries">Injuries</option>
+                                <option value="Stretching">Stretching</option>
+                            </select>
+                        </form>}
                 <div className="flex flex-col items-center">
                     <div className='m-10 flex justify-center flex-wrap gap-4'>
                         {allTrainings.length === 0 ? <img src='./empty.png' className='h-52 w-52' /> :
-                            (loading ? <div class="loader"></div> :
+                            (loading ? <div className="loader"></div> :
                                 (filtering.length > 0 ? filtering : allTrainings)
                                     .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
                                     .map(video =>
