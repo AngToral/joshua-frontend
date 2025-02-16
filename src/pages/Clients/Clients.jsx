@@ -4,15 +4,20 @@ import { getUserId, getUsers } from '../../apiService/userApi';
 import CardsClients from '../../components/clients/cardsClients';
 import '../Dashboard/dashboard.css'
 import { authContext } from '../../components/context/authContext';
+import { Input, message } from "antd";
+
+const { Search } = Input;
 
 const Clients = () => {
 
+    const [messageApi, contextHolder] = message.useMessage();
     const [allClients, setAllClients] = useState([]);
     const [dummy, refresh] = useState(false);
     const [open, setOpen] = useState(false);
     const [selectedClient, setSelectedClient] = useState(null);
     const [loading, setLoading] = useState(false);
     const [userPic, setUserPic] = useState("")
+    const [filtering, setFiltering] = useState([]);
 
     const navigate = useNavigate();
     const { userId } = useContext(authContext)
@@ -51,8 +56,33 @@ const Clients = () => {
         setLoading(false)
     }
 
+    const onSearch = (value, _e, info) => {
+        console.log(info?.source, value);
+        const newList = [...allClients]
+        if (info) {
+            const searchTerms = value.toLowerCase().split(" ");
+            const filteredData = newList.filter(info => {
+                return searchTerms.every(term =>
+                    info.name.toLowerCase().includes(term) ||
+                    info.lastname.toLowerCase().includes(term) ||
+                    info.email.toLowerCase().includes(term) ||
+                    info.plan.toLowerCase().includes(term)
+                )
+            })
+            if (filteredData.length !== 0) return setFiltering(filteredData);
+            if (filteredData.length === 0) {
+                messageApi.open({
+                    type: 'warning',
+                    content: 'No data'
+                })
+            }
+        }
+        if (!info) allClients;
+    }
+
     return (
         <>
+            {contextHolder}
             <div className="h-screen">
                 <div className="flex justify-around items-center flex-wrap md:h-[130px] h-[100px] text-xl">
                     <div className="flex items-center">
@@ -69,12 +99,20 @@ const Clients = () => {
                         <button onClick={handleProfile}>Profile</button>
                     </div>
                 </div>
+                <div className="flex justify-center">
+                    <Search className="w-[320px]"
+                        placeholder="Name, lastname, email or plan"
+                        allowClear
+                        enterButton="Search"
+                        onSearch={onSearch}
+                    />
+                </div>
                 {loading ?
                     <div className='h-screen flex justify-center items-center'><div className='loader'></div></div>
                     :
                     <div className="flex flex-col">
                         <div className='m-10 flex flex-wrap justify-center flex-wrap gap-10'>
-                            {allClients.map(client =>
+                            {(filtering.length > 0 ? filtering : allClients).map(client =>
                                 <CardsClients
                                     key={client._id}
                                     client={client}

@@ -1,5 +1,4 @@
 div {
-
     &.ant-modal-content {
         // background-color: var(--gris) !important;
         background-image: url('./public/gloves.jpg') !important;
@@ -17,5 +16,20 @@ div {
 
     &.ant-modal-title {
         color: white !important;
+    }
+}
+
+span {
+    &.ant-input-outlined {
+        background: var(--gris-oscuro) !important;
+        border-color: var(--gris-oscuro) !important;
+        color: black !important;
+    }
+}
+
+button {
+    &.ant-btn-variant-solid {
+        background: var(--negro-gris) !important;
+        color: var(--gris-claro) !important;
     }
 }
