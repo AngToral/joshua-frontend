@@ -95,7 +95,7 @@ const CardsClients = ({ client, refresh, clientId, visible }) => {
                                 {errors.plan && <span className='text-red-400 flex flex-col'>Invalid typo. Most be "Basic", "Pro" or "Plus".</span>}
                             </p>
                             <p><strong>Status: </strong>
-                                {client.status === "active" ? "🟢" : "🔴"}
+                                {client.status === "active" ? "🟢 " : "🔴 "}
                                 <input disabled value={" " + client.status} {...register("status", { required: true })} className='bg-transparent border-transparent border-[1px] font-light' />
                             </p>
                             {!inputAble &&

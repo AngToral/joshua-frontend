@@ -144,16 +144,18 @@ const Dashboard = () => {
                     <div className='m-10 flex justify-center flex-wrap gap-4'>
                         {allTrainings.length === 0 ? <img src='./empty.png' className='h-52 w-52' /> :
                             (loading ? <div class="loader"></div> :
-                                (filtering.length > 0 ? filtering : allTrainings).map(video =>
-                                    <CardsTrainings
-                                        key={video._id}
-                                        video={video}
-                                        refresh={refresh}
-                                        userType={userType}
-                                        visible={setOpen}
-                                        videoId={setSelectedVideo}
-                                    />
-                                ))
+                                (filtering.length > 0 ? filtering : allTrainings)
+                                    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+                                    .map(video =>
+                                        <CardsTrainings
+                                            key={video._id}
+                                            video={video}
+                                            refresh={refresh}
+                                            userType={userType}
+                                            visible={setOpen}
+                                            videoId={setSelectedVideo}
+                                        />
+                                    ))
                         }
                     </div>
                 </div>
