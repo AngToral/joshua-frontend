@@ -5,6 +5,7 @@ import CardsClients from '../../components/clients/cardsClients';
 import '../Dashboard/dashboard.css'
 import { authContext } from '../../components/context/authContext';
 import { Input, message } from "antd";
+import ModalClient from '../../components/clients/ModalClient';
 
 const { Search } = Input;
 
@@ -81,6 +82,10 @@ const Clients = () => {
         if (!info) allClients;
     }
 
+    const onCancel = () => {
+        setOpen(false)
+    }
+
     return (
         <>
             {contextHolder}
@@ -92,7 +97,7 @@ const Clients = () => {
                         </a>
                     </div>
                     <div className='flex flex-row gap-4'>
-                        <button onClick={handleDashboard}>New client</button>
+                        <button onClick={() => setOpen(!open)}>New client</button>
                         <button onClick={handleDashboard}>Dashboard</button>
                     </div>
                     <div className='flex items-center gap-2 cursor-pointer'>
@@ -125,6 +130,10 @@ const Clients = () => {
                         </div>
                     </div>}
             </div>
+            <ModalClient
+                visible={open}
+                onCancel={onCancel}
+            />
         </>
     )
 }
