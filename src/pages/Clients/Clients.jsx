@@ -118,15 +118,17 @@ const Clients = () => {
                     :
                     <div className="flex flex-col">
                         <div className='m-10 flex flex-wrap justify-center flex-wrap gap-10'>
-                            {(filtering.length > 0 ? filtering : allClients).map(client =>
-                                <CardsClients
-                                    key={client._id}
-                                    client={client}
-                                    refresh={refresh}
-                                    clientId={selectedClient}
-                                    visible={open}
-                                />
-                            )}
+                            {(filtering.length > 0 ? filtering : allClients)
+                                .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+                                .map(client =>
+                                    <CardsClients
+                                        key={client._id}
+                                        client={client}
+                                        refresh={refresh}
+                                        clientId={selectedClient}
+                                        visible={open}
+                                    />
+                                )}
                         </div>
                     </div>}
             </div>
