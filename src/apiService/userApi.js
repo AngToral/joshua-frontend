@@ -136,20 +136,7 @@ export const sendContactEmail = async (data) => {
     const user = await response.json();
     return user;
 }
-//El cliente debe crear contraseña de su nueva cuenta
-export const sendSetPasswordEmail = async (data) => {
-    const token = localStorage.getItem("access_token");
-    const response = await fetch(`${baseUrl}/user/setpassword`, {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-            "Content-Type": "application/json",
-            "authorization": `Bearer ${token}`,
-        },
-    });
-    const user = await response.json();
-    return user;
-}
+
 //envío de correo cuando alguien rellena el form de sign in en home
 export const sendNewAccountEmail = async (data) => {
     const token = localStorage.getItem("access_token");
