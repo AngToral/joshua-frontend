@@ -80,7 +80,7 @@ export const deleteUser = async (id) => {
     const deletedUser = await response.json();
     return deletedUser
 }
-
+// Si se olvida la contraseña fuera del login
 export const forgotPasswordEmail = async (email) => {
     const token = localStorage.getItem("access_token");
     const response = await fetch(`${baseUrl}/user/forgottenpassword`, {
@@ -122,7 +122,7 @@ export const sendChangeEmail = async (email) => {
     const user = await response.json();
     return user;
 }
-
+// envío de correo cuando alguien rellena el form de contacto en home
 export const sendContactEmail = async (data) => {
     const token = localStorage.getItem("access_token");
     const response = await fetch(`${baseUrl}/user/clientcontact`, {
@@ -136,7 +136,7 @@ export const sendContactEmail = async (data) => {
     const user = await response.json();
     return user;
 }
-
+//El cliente debe crear contraseña de su nueva cuenta
 export const sendSetPasswordEmail = async (data) => {
     const token = localStorage.getItem("access_token");
     const response = await fetch(`${baseUrl}/user/setpassword`, {
@@ -150,7 +150,7 @@ export const sendSetPasswordEmail = async (data) => {
     const user = await response.json();
     return user;
 }
-
+//envío de correo cuando alguien rellena el form de sign in en home
 export const sendNewAccountEmail = async (data) => {
     const token = localStorage.getItem("access_token");
     const response = await fetch(`${baseUrl}/user/newaccount`, {

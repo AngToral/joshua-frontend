@@ -133,6 +133,7 @@ const Clients = () => {
             <ModalClient
                 visible={open}
                 onCancel={onCancel}
+                refresh={refresh}
             />
         </>
     )
