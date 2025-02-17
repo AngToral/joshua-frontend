@@ -2,11 +2,11 @@ import { Modal, message } from 'antd'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import '../../pages/Dashboard/dashboard.css'
-import { addUser, sendSetPasswordEmail } from '../../apiService/userApi';
+import { addUser } from '../../apiService/userApi';
 
 const ModalClient = ({ visible, onCancel, refresh }) => {
 
-    const { register, handleSubmit, setValue, reset, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [loading, setLoading] = useState(false);
 
     const onSubmitAddUser = async (data) => {
