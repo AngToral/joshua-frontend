@@ -58,6 +58,12 @@ const Login = () => {
                 content: 'Wrong password'
             })
         }
+        if (response.msg === "You have to change your password first") {
+            return messageApi.open({
+                type: 'error',
+                content: "You have to change your password first",
+            })
+        }
     }
 
     const { register: register2, handleSubmit: handleSubmit2, reset: reset2, formState: { errors: errors2 } } = useForm();
@@ -68,6 +74,12 @@ const Login = () => {
         setLoading(true)
         const response = await forgotPasswordEmail({ email })
         setLoading(false)
+        if (response.msg === "This email is not registered") {
+            return messageApi.open({
+                type: 'error',
+                content: "This email is not registered",
+            })
+        }
         if (!response.msg) {
             messageApi.open({
                 type: 'success',
@@ -75,12 +87,6 @@ const Login = () => {
             })
             reset2()
             setForgot(false)
-        }
-        if (response.msg === "This email is not registered") {
-            messageApi.open({
-                type: 'error',
-                content: "This email is not registered",
-            })
         }
     }
 
