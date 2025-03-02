@@ -55,8 +55,8 @@ const ModalClient = ({ visible, onCancel, refresh }) => {
                             <label className='font-light mr-3'>Select a plan:</label>
                             <select {...register("plan", { required: true })} className='bg-transparent font-extralight'>
                                 <option value="Basic">Basic</option>
-                                <option value="Pro">Pro</option>
                                 <option value="Plus">Plus</option>
+                                <option value="Pro">Pro</option>
                             </select>
                             {errors.plan && <span className='text-red-400'>This field is required</span>}
                         </div>

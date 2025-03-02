@@ -11,6 +11,8 @@ import { useForm } from "react-hook-form";
 import { sendContactEmail, sendNewAccountEmail } from '../../apiService/userApi';
 import { useNavigate } from 'react-router-dom';
 import { authContext } from '../../components/context/authContext';
+import 'animate.css';
+import ScrollAnimation from 'react-animate-on-scroll';
 
 const Home = () => {
 
@@ -125,10 +127,10 @@ const Home = () => {
             {contextHolder}
             <div>
                 <div id='home' className='encabezado'>
-                    <video className="myVideo" autoPlay loop muted>
+                    <video className="myVideo animate__animated animate__fadeIn" autoPlay loop muted>
                         <source src="hero-joshua-home.mp4" type="video/mp4" />
                     </video>
-                    <div className="fixed top-0 left-0 right-0 z-50">
+                    <div className="fixed top-0 left-0 right-0 z-50 animate__animated animate__fadeIn">
                         {mobile ?
                             <nav className={isMenuOpen && `nav-menu`}>
                                 <div className="navbar-toggle text-3xl pl-4 pt-4 cursor-pointer" onClick={mobile ? toggleMenu : null}>
@@ -199,144 +201,150 @@ const Home = () => {
                     </div >
                     <div className="flex flex-col justify-center homePosition mx-8">
                         {mobile &&
-                            <img src="logoCompletoGris.png" alt="logoJoshua" className='h-48 w-48 mt-20 mb-10' />
+                            <img src="logoCompletoGris.png" alt="logoJoshua" className='h-48 w-48 mt-20 mb-10 animate__animated animate__fadeInUp' />
                         }
-                        <p className='font-bold md:text-6xl text-4xl lg:mb-6 mb-4'>Your best version awaits you!</p>
-                        <h1 className='font-bold md:text-4xl text-2xl md:mb-6 mb-4'>I'm Joshua, a boxer and personal trainer</h1>
-                        <p className='md:text-2xl text-lg md:mb-6 mb-4'>Discover effective workouts to achieve your fitness goals. Start your transformation today!</p>
-                        <button onClick={scrollToContact} className='buttonLink buttonCallToAction'>Start today!</button>
+                        <p className='font-bold md:text-6xl text-4xl lg:mb-6 mb-4 animate__animated animate__fadeInUp'>Your best version awaits you!</p>
+                        <h1 className='font-bold md:text-4xl text-2xl md:mb-6 mb-4 animate__animated animate__fadeInUp'>I'm Joshua, a boxer and personal trainer</h1>
+                        <p className='md:text-2xl text-lg md:mb-6 mb-4 animate__animated animate__fadeInUp'>Discover effective workouts to achieve your fitness goals. Start your transformation today!</p>
+                        <button onClick={scrollToContact} className='buttonLink buttonCallToAction animate__animated animate__fadeInUp'>Start today!</button>
                     </div >
+
                 </div>
                 {/* about */}
+
                 <div id='aboutMe' className="about-me bg-joshua-50 text-black">
                     <img className='image-me' src='./J3.jpg' />
-                    <div className="flex flex-col px-10 text-about-me py-4">
-                        <p className='pb-4 font-bold text-xl'>Meet Joshua, Your Guide to Fitness Success!</p>
-                        <p className='pb-4'>A passionate personal trainer dedicated to helping you achieve your fitness goals. Whether you' re looking to lose weight, build strength, improve your overall health, or simply feel better in your own skin, I'm here to guide you every step of the way.</p>
-                        <p className='pb-4'>I'm a family man who understands the importance of balance and prioritization in life.</p>
-                        <p className='pb-4'>I'm known for my quickness and agility. They even call me "the plague" because I'm always one step ahead of my opponents!
-                            I'm excited to share my knowledge and experience with you. Let's work together to achieve your fitness dreams!</p>
-                    </div>
+                    <ScrollAnimation animateIn="animate__animated animate__fadeInUp" animateOnce={true}>
+                        <div className="flex flex-col px-10 text-about-me py-4">
+                            <p className='pb-4 font-bold text-xl animate__animated animate__fadeInUp'>Meet Joshua, Your Guide to Fitness Success!</p>
+                            <p className='pb-4'>A passionate personal trainer dedicated to helping you achieve your fitness goals. Whether you' re looking to lose weight, build strength, improve your overall health, or simply feel better in your own skin, I'm here to guide you every step of the way.</p>
+                            <p className='pb-4'>I'm a family man who understands the importance of balance and prioritization in life.</p>
+                            <p className='pb-4'>I'm known for my quickness and agility. They even call me "the plague" because I'm always one step ahead of my opponents!
+                                I'm excited to share my knowledge and experience with you. Let's work together to achieve your fitness dreams!</p>
+                        </div>
+                    </ScrollAnimation>
                 </div>
                 {/* servicios */}
                 <div id='services' className="flex flex-col items-center text-lg max-h-[680px] bg-joshua-100 pb-10">
-                    <p className='flex justify-center items-end md:h-[150px] md:text-4xl text-2xl md:m-0 m-5'>Services and plans</p>
-                    <div className="flex justify-center flex-col md:flex-row items-center text-lg h-screen bg-joshua-100 gap-8 ">
+                    <ScrollAnimation animateIn="animate__animated animate__fadeInUp" animateOnce={true} className='flex justify-center items-end md:h-[150px] md:text-4xl text-2xl md:m-0 m-5'>
+                        Services and plans
+                    </ScrollAnimation>
+                    <ScrollAnimation animateIn="animate__animated animate__fadeInUp" animateOnce={true} className="flex justify-center flex-col md:flex-row items-center text-lg h-screen bg-joshua-100 gap-8 ">
                         <div className='flex flex-col gap-5'>
                             <div className='max-w-80 flex flex-col items-center justify-center'>
                                 <BsPersonArmsUp className='md:h-16 md:w-16 h-8 w-8 md:mb-4' />
                                 <p className='md:pb-4'>In-Person Training</p>
-                                <p className='md:pb-4'>Experience the benefits of one-on-one coaching with me in my studio.</p>
+                                <p className='md:pb-4 text-center'>Experience the benefits of one-on-one coaching with me in my studio.</p>
                             </div>
                             <div className='max-w-80 flex flex-col items-center'>
                                 <MdWorkspacePremium className='md:h-16 md:w-16 h-8 w-8 md:mb-4' />
                                 <p className='md:pb-4'>Plus Pack</p>
-                                <p className='md:pb-4'>You will have all the training videos and Nutritional recommendations.</p>
+                                <p className='md:pb-4 text-center'>You will have all the training videos and Nutritional recommendations.</p>
                             </div>
                         </div>
                         <div className='flex flex-col gap-5'>
                             <div className='max-w-80 flex flex-col items-center'>
                                 <IoStar className='md:h-16 md:w-16 h-8 w-8 md:mb-4' />
                                 <p className='md:pb-4'>Basic Plan</p>
-                                <p className='md:pb-4'>You will have all my training videos wherever you want to work out.</p>
+                                <p className='md:pb-4 text-center'>You will have all my training videos wherever you want to work out.</p>
                             </div>
                             <div className='max-w-80 flex flex-col items-center'>
                                 <FaTrophy className='md:h-16 md:w-16 h-8 w-8 md:mb-4' />
                                 <p className='md:pb-4'>Pro Pack</p>
-                                <p className='md:pb-4'>You will have all the training videos, nutritional recommendations, information about injuries and how to treat them, and stretching.</p>
+                                <p className='md:pb-4 text-center'>You will have all the training videos, nutritional recommendations, information about injuries and how to treat them, and stretching.</p>
                             </div>
                         </div>
-                    </div>
+                    </ScrollAnimation>
                 </div>
                 {/* contacto */}
                 <div id='contact' className='flex md:flex-row flex-col h-[500px] bg-joshua-500 h-[850px] md:h-[550px]'>
                     <div className='contact-bg flex justify-center flex-col md:w-1/2'>
-                        <p className='md:text-3xl text-2xl flex items-center ml-10 mt-10'>Contact me!</p>
+                        <ScrollAnimation animateIn="animate__animated animate__fadeInUp" animateOnce={true} className='md:text-3xl text-2xl flex items-center ml-10 mt-10'>Contact me!</ScrollAnimation>
                         <div className='flex flex-col ml-16 md:mb-10 h-[290px] justify-center gap-2'>
                             <a href="">
-                                <div className='flex gap-2 items-center'>
+                                <ScrollAnimation animateIn="animate__animated animate__fadeInUp" animateOnce={true} className='flex gap-2 items-center'>
                                     <FaInstagram className='h-6 w-6' />
                                     <p className='md:text-2xl text-xl flex items-center font-extralight'>@joshua</p>
-                                </div>
+                                </ScrollAnimation>
                             </a>
-                            <div className='flex gap-2 items-center'>
+                            <ScrollAnimation animateIn="animate__animated animate__fadeInUp" animateOnce={true} className='flex gap-2 items-center'>
                                 <AiOutlineMail className='h-6 w-6' />
                                 <p className='md:text-2xl text-xl flex items-center font-extralight'>joshua@gmail.com</p>
-                            </div>
+                            </ScrollAnimation>
                         </div>
                     </div>
                     <div className="flex flex-col items-center justify-center text-lg md:w-1/2 ">
                         <div className="flex md:justify-start justify-center items-center" >
-                            <div className="flex flex-col justify-center items-center">
+                            <ScrollAnimation animateIn="animate__animated animate__fadeInUp" animateOnce={true}>
+                                <div className="flex flex-col justify-center items-center">
+                                    <p className="flex mt-5 mx-8 md:text-3xl text-xl font-extralight">
+                                        Are you clear about it? Subscribe now:
+                                    </p>
+                                    {registerSent ?
+                                        <p className="flex mt-5 mx-8 md:text-3xl text-green-600 text-xl font-extralight">Great! Joshua will contact you soon</p>
+                                        :
+                                        <button onClick={showModal} className="flex mt-5 mx-8 md:text-4xl text-2xl font-extralight link">Sign in!</button>
+                                    }
 
-                                <p className="flex mt-5 mx-8 md:text-3xl text-xl font-extralight">
-                                    Are you clear about it? Subscribe now:
-                                </p>
-                                {registerSent ?
-                                    <p className="flex mt-5 mx-8 md:text-3xl text-green-600 text-xl font-extralight">Great! Joshua will contact you soon</p>
-                                    :
-                                    <button onClick={showModal} className="flex mt-5 mx-8 md:text-4xl text-2xl font-extralight link">Sign in!</button>
-                                }
-                                <Modal
-                                    footer={[
-                                        <button onClick={handleCancel}>
-                                            Cancel
-                                        </button>
-                                    ]}
-                                    title="Sign in" open={isModalOpen} onCancel={handleCancel}>
-                                    <form onSubmit={handleSubmit2(onSubmitSignIn)} className='max-w-[300px]'>
+                                    <Modal
+                                        footer={[
+                                            <button onClick={handleCancel}>
+                                                Cancel
+                                            </button>
+                                        ]}
+                                        title="Sign in" open={isModalOpen} onCancel={handleCancel}>
+                                        <form onSubmit={handleSubmit2(onSubmitSignIn)} className='max-w-[300px]'>
+                                            <div className="flex flex-col gap-4">
+
+                                                <input placeholder='Name' {...register2("clientName", { required: true })} className='text-white bg-transparent border-transparent border-b-black border-[1px] font-light mt-5' />
+                                                {errors.clientName && <span className='text-red-400'>This field is required</span>}
+                                                <input placeholder='Lastname' {...register2("clientLastname", { required: true })} className='bg-transparent border-transparent border-b-black border-[1px] font-light' />
+                                                {errors.clientLastname && <span className='text-red-400'>This field is required</span>}
+                                                <input placeholder='Email' {...register2("clientEmail", { required: true })} className='bg-transparent border-transparent border-b-black border-[1px] font-light' />
+                                                {errors.clientEmail && <span className='text-red-400'>This field is required</span>}
+
+                                                <div className='flex'>
+                                                    <label className='font-light mr-3'>Select a contact type:</label>
+                                                    <select {...register2("subjectType")} className='bg-transparent font-extralight'>
+                                                        <option value="Basic">Basic Plan</option>
+                                                        <option value="Plus">Plus Pack</option>
+                                                        <option value="Pro">Pro Pack</option>
+                                                    </select>
+                                                </div>
+                                                <button type='submit'>
+                                                    {loading ? "Loading..." : "Ok"}
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </Modal>
+
+                                    <p type="text" className="flex mt-5 mx-8 md:text-3xl text-xl font-extralight">
+                                        Or if you need more information, write to me using this form. I will be happy to answer you!
+                                    </p>
+
+                                    <form onSubmit={handleSubmit(onSubmit)}>
                                         <div className="flex flex-col gap-4">
-
-                                            <input placeholder='Name' {...register2("clientName", { required: true })} className='text-white bg-transparent border-transparent border-b-black border-[1px] font-light mt-5' />
-                                            {errors.clientName && <span className='text-red-400'>This field is required</span>}
-                                            <input placeholder='Lastname' {...register2("clientLastname", { required: true })} className='bg-transparent border-transparent border-b-black border-[1px] font-light' />
-                                            {errors.clientLastname && <span className='text-red-400'>This field is required</span>}
-                                            <input placeholder='Email' {...register2("clientEmail", { required: true })} className='bg-transparent border-transparent border-b-black border-[1px] font-light' />
-                                            {errors.clientEmail && <span className='text-red-400'>This field is required</span>}
-
-                                            <div className='flex'>
-                                                <label className='font-light mr-3'>Select a contact type:</label>
-                                                <select {...register2("subjectType")} className='bg-transparent font-extralight'>
+                                            <div className='flex mt-6'>
+                                                <label className='font-extralight mr-3'>Select a contact type:</label>
+                                                <select {...register("subjectType")} className='bg-transparent font-extralight'>
+                                                    <option value="Info">Information</option>
                                                     <option value="Basic">Basic Plan</option>
                                                     <option value="Plus">Plus Pack</option>
                                                     <option value="Pro">Pro Pack</option>
                                                     <option value="Personal">Personal Training</option>
                                                 </select>
                                             </div>
-                                            <button type='submit'>
-                                                {loading ? "Loading..." : "Ok"}
-                                            </button>
+                                            <input placeholder='Name' {...register("clientName", { required: true })} className='bg-transparent border-transparent border-b-white border-[1px] font-light' />
+                                            {errors.clientName && <span className='text-red-400'>This field is required</span>}
+                                            <input placeholder='Email' {...register("clientEmail", { required: true })} className='bg-transparent border-transparent border-b-white border-[1px] font-light' />
+                                            {errors.clientEmail && <span className='text-red-400'>This field is required</span>}
+                                            <textarea placeholder='Message' {...register("subject", { required: true })} className='bg-transparent border-transparent border-b-white border-[1px] font-light' />
+                                            {errors.subject && <span className='text-red-400'>This field is required</span>}
+                                            <button type='submit'>{loading ? "Loading..." : "Send"}</button>
                                         </div>
                                     </form>
-                                </Modal>
-
-                                <p type="text" className="flex mt-5 mx-8 md:text-3xl text-xl font-extralight">
-                                    Or if you need more information, write to me using this form. I will be happy to answer you!
-                                </p>
-
-                                <form onSubmit={handleSubmit(onSubmit)}>
-                                    <div className="flex flex-col gap-4">
-                                        <div className='flex mt-6'>
-                                            <label className='font-extralight mr-3'>Select a contact type:</label>
-                                            <select {...register("subjectType")} className='bg-transparent font-extralight'>
-                                                <option value="Info">Information</option>
-                                                <option value="Basic">Basic Plan</option>
-                                                <option value="Plus">Plus Pack</option>
-                                                <option value="Pro">Pro Pack</option>
-                                                <option value="Personal">Personal Training</option>
-                                            </select>
-                                        </div>
-                                        <input placeholder='Name' {...register("clientName", { required: true })} className='bg-transparent border-transparent border-b-white border-[1px] font-light' />
-                                        {errors.clientName && <span className='text-red-400'>This field is required</span>}
-                                        <input placeholder='Email' {...register("clientEmail", { required: true })} className='bg-transparent border-transparent border-b-white border-[1px] font-light' />
-                                        {errors.clientEmail && <span className='text-red-400'>This field is required</span>}
-                                        <textarea placeholder='Message' {...register("subject", { required: true })} className='bg-transparent border-transparent border-b-white border-[1px] font-light' />
-                                        {errors.subject && <span className='text-red-400'>This field is required</span>}
-                                        <button type='submit'>{loading ? "Loading..." : "Send"}</button>
-                                    </div>
-                                </form>
-
-                            </div>
+                                </div>
+                            </ScrollAnimation>
                         </div>
                     </div>
                 </div>

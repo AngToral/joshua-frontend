@@ -13,10 +13,12 @@ import { IoIosLogOut } from 'react-icons/io';
 
 const Profile = () => {
 
+    const [dummy, refresh] = useState(false);
+
     useEffect(() => {
         document.body.style.backgroundColor = "#16375f"
         getUserLogged();
-    }, []);
+    }, [dummy]);
 
     const [userPic, setUserPic] = useState("")
     const [userLogged, setUserLogged] = useState({})
@@ -66,6 +68,7 @@ const Profile = () => {
         message.success("Data edited successfully!")
         setInputAble(!inputAble);
         setLoading(false)
+        refresh(!dummy);
     }
 
     const handleChangeImage = () => {
