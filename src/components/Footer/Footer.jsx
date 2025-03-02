@@ -18,7 +18,8 @@ const Footer = () => {
     }
 
     const scrollToHome = () => {
-        document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
+        navigate("/")
+        window.scrollTo(0, 0);
     };
 
     return (
