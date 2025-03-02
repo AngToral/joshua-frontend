@@ -65,7 +65,7 @@ const CardsClients = ({ client, refresh }) => {
             <div className="cardClient">
                 <div className="md:flex items-center gap-4">
                     <div className="flex flex-col gap-4 mt-4 items-center">
-                        <img className="rounded-full md:h-28 md:w-28 h-[85px] w-[85px] object-cover border-grey-500 border-2" src={client.profilePic} />
+                        <img className="rounded-full md:h-28 md:w-28 h-[85px] w-[90px] object-cover border-grey-500 border-2" src={client.profilePic} />
                         <div className="flex gap-4 mb-3">
                             <button onClick={() => onEdit(client._id)}>
                                 {!inputAble ? <IoMdArrowRoundBack className='h-5 w-5' /> : <FaRegEdit className='h-5 w-5' />}
