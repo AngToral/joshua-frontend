@@ -23,7 +23,7 @@ const Footer = () => {
     };
 
     return (
-        <footer className="text-lg bg-joshua-700">
+        <footer className="text-lg bg-joshua-700 mt-10">
             <div className="flex md:flex-row flex-col justify-center md:justify-around items-center mb-5 gap-5 md:gap-0">
                 <a onClick={scrollToHome} >
                     <img src="./logoCompletoGris.png" alt="logo" className='h-36 w-36 mt-10 cursor-pointer' />
