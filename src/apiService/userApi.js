@@ -94,7 +94,7 @@ export const forgotPasswordEmail = async (email) => {
     const user = await response.json();
     return user;
 }
-
+//envío de email para cambiar contraseña dentro de la cuenta
 export const sendChangePassword = async (email) => {
     const token = localStorage.getItem("access_token");
     const response = await fetch(`${baseUrl}/user/changepassword`, {
@@ -109,19 +109,20 @@ export const sendChangePassword = async (email) => {
     return user;
 }
 
-export const sendChangeEmail = async (email) => {
-    const token = localStorage.getItem("access_token");
-    const response = await fetch(`${baseUrl}/user/changeemail`, {
-        method: "POST",
-        body: JSON.stringify({ email }),
-        headers: {
-            "Content-Type": "application/json",
-            "authorization": `Bearer ${token}`,
-        },
-    });
-    const user = await response.json();
-    return user;
-}
+// export const sendChangeEmail = async (email) => {
+//     const token = localStorage.getItem("access_token");
+//     const response = await fetch(`${baseUrl}/user/changeemail`, {
+//         method: "POST",
+//         body: JSON.stringify({ email }),
+//         headers: {
+//             "Content-Type": "application/json",
+//             "authorization": `Bearer ${token}`,
+//         },
+//     });
+//     const user = await response.json();
+//     return user;
+// }
+
 // envío de correo cuando alguien rellena el form de contacto en home
 export const sendContactEmail = async (data) => {
     const token = localStorage.getItem("access_token");

@@ -1,13 +1,14 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { authContext } from '../../components/context/authContext';
-import { getUserId, updatePhoto, updateUser } from '../../apiService/userApi';
+import { getUserId, sendChangePassword, updatePhoto, updateUser } from '../../apiService/userApi';
 import { useForm } from 'react-hook-form';
 import '../../pages/Dashboard/dashboard.css'
 import { FaRegCircleCheck } from 'react-icons/fa6';
 import { FaRegEdit } from 'react-icons/fa';
 import { ImCancelCircle } from "react-icons/im";
 import { message } from 'antd';
+import { IoLockClosed } from "react-icons/io5";
 
 const Profile = () => {
 
@@ -104,6 +105,13 @@ const Profile = () => {
         }
     }
 
+    const newPassword = async () => {
+        setLoading(true)
+        await sendChangePassword(userLogged.email)
+        setLoading(false)
+        message.success("An email has been sent successfully");
+    }
+
     return (
         <div className='h-screen'>
             <div className="flex justify-around items-center flex-wrap md:h-[130px] h-[100px] text-xl">
@@ -120,7 +128,6 @@ const Profile = () => {
             <div className='my-16 flex justify-center gap-12'>
                 <div className='flex flex-col justify-center gap-5'>
                     <img src={userPic} alt="profile-pic" className='rounded-full h-56 w-56 object-cover' />
-                    {/* Input de archivo oculto */}
                     <input
                         type="file"
                         ref={fileInputRef}
@@ -136,9 +143,13 @@ const Profile = () => {
                         {uploadingImage ? 'Uploading...' : 'Change image'}
                     </button>
                 </div>
-                <div className='profile-card'>
-                    {!inputAble ? <button onClick={() => setInputAble(!inputAble)}><ImCancelCircle className='h-5 w-5 mb-5' /></button> :
-                        <button onClick={() => setInputAble(!inputAble)}><FaRegEdit className='h-5 w-5 mb-5' /></button>}
+                <div className='w-[400px]'>
+                    <div className='flex justify-between gap-5 mb-5'>
+                        {!inputAble ? <button onClick={() => setInputAble(!inputAble)}><ImCancelCircle className='h-5 w-5' /></button> :
+                            <button onClick={() => setInputAble(!inputAble)}><FaRegEdit className='h-5 w-5' /></button>}
+                        <button onClick={newPassword} className='flex gap-2 items-center'><IoLockClosed className='h-5 w-5' />Change password</button>
+                    </div>
+
                     <form onSubmit={handleSubmit(onSubmit)} >
                         <div className="flex flex-col">
                             <p><strong>Name: </strong>
