@@ -31,3 +31,7 @@
         transform: rotate(.5turn)
     }
 }
+
+.sombra {
+    text-shadow: var(--azul-claro) 1px 0 10px;
+}

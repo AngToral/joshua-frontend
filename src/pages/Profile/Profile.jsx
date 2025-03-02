@@ -133,7 +133,9 @@ const Profile = () => {
                     <IoIosLogOut className="mr-2" /> Logout
                 </button>
             </div>
-
+            <div className='flex justify-center'>
+                <p className='text-xl md:text-2xl sombra'>Welcome, {userLogged.name}!</p>
+            </div>
             <div className='my-16 flex justify-center gap-12'>
                 <div className='flex flex-col justify-center gap-5'>
                     <img src={userPic} alt="profile-pic" className='rounded-full h-56 w-56 object-cover' />
