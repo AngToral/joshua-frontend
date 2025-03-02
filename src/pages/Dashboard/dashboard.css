@@ -31,3 +31,7 @@
         transform: rotate(.5turn)
     }
 }
+
+.profile-card {
+    width: 400px;
+}
