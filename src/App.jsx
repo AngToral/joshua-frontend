@@ -7,6 +7,7 @@ import Profile from './pages/Profile/Profile'
 import Clients from './pages/Clients/Clients'
 import { authContext } from './components/context/authContext'
 import { useContext } from 'react'
+import PrivacyPolicy from './pages/Policy/PrivacyPolicy'
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
         <Route path="/login" element={isAuthenticated ? <Navigate replace to={"/dashboard"} /> : <Login />} />
         <Route path='/' element={<Home />} />
         <Route path='/setnewpassword/:userid' element={<SetPassword />} />
+        <Route path='/privacy-policy' element={<PrivacyPolicy />} />
         <Route path='/dashboard' element={!isAuthenticated ? <Navigate replace to={"/login"} /> : <Dashboard />} />
         <Route path='/profile' element={!isAuthenticated ? <Navigate replace to={"/login"} /> : <Profile />} />
         <Route path='/clients' element={!isAuthenticated ? <Navigate replace to={"/login"} /> : <Clients />} />

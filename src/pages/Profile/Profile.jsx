@@ -10,6 +10,7 @@ import { ImCancelCircle } from "react-icons/im";
 import { message } from 'antd';
 import { IoLockClosed } from "react-icons/io5";
 import { IoIosLogOut } from 'react-icons/io';
+import Footer from '../../components/Footer/Footer';
 
 const Profile = () => {
 
@@ -190,7 +191,7 @@ const Profile = () => {
                     </form>
                 </div>
             </div>
-
+            <Footer />
         </div >
     )
 }

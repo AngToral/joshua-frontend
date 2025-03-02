@@ -6,7 +6,7 @@ import '../Dashboard/dashboard.css'
 import { authContext } from '../../components/context/authContext';
 import { Input, message } from "antd";
 import ModalClient from '../../components/clients/ModalClient';
-
+import Footer from '../../components/Footer/Footer';
 const { Search } = Input;
 
 const Clients = () => {
@@ -133,6 +133,7 @@ const Clients = () => {
                                 )}
                         </div>
                     </div>}
+                <Footer />
             </div>
             <ModalClient
                 visible={open}

@@ -10,6 +10,7 @@ import './dashboard.css'
 import '../Home/home.css'
 import ModalVideo from '../../components/video/ModalVideo';
 import { IoIosLogOut } from 'react-icons/io';
+import Footer from '../../components/Footer/Footer';
 
 const Dashboard = () => {
     const [userPic, setUserPic] = useState("")
@@ -181,6 +182,7 @@ const Dashboard = () => {
                     refresh={refresh}
                     videoId={selectedVideo}
                 />
+                <Footer />
             </div>
         </>
     )
