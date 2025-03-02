@@ -130,9 +130,11 @@ const Dashboard = () => {
                             <button onClick={handleClients} className='link'>Clients</button>
                         </div>
                     }
-                    <div className='flex items-center gap-2 cursor-pointer'>
-                        <img src={userPic} alt="profile-pic" className='rounded-full h-12 w-12 object-cover' />
-                        <a onClick={handleProfile}>Profile</a>
+                    <div className='flex items-center gap-2'>
+                        <a onClick={handleProfile} className='cursor-pointer flex items-center gap-3'>
+                            <img src={userPic} alt="profile-pic" className='rounded-full h-12 w-12 object-cover' />
+                            Profile
+                        </a>
                         <button variant="text" className="flex items-center link2 font-display text-foto-200 m-4 md:text-xl font-bold" onClick={logout}>
                             <IoIosLogOut className="mr-2" /> Logout
                         </button>

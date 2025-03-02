@@ -101,8 +101,10 @@ const Clients = () => {
                         <button onClick={handleDashboard}>Dashboard</button>
                     </div>
                     <div className='flex items-center gap-2 cursor-pointer'>
-                        <img src={userPic} alt="profile-pic" className='rounded-full h-12 w-12 object-cover' />
-                        <button onClick={handleProfile}>Profile</button>
+                        <a onClick={handleProfile} className='cursor-pointer flex items-center gap-3'>
+                            <img src={userPic} alt="profile-pic" className='rounded-full h-12 w-12 object-cover' />
+                            Profile
+                        </a>
                     </div>
                 </div>
                 <div className="flex justify-center">

@@ -12,9 +12,9 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 
 const VALID_PLANS = ['Plus', 'Pro', 'Basic'];
 
-const CardsClients = ({ client, refresh, clientId, visible }) => {
+const CardsClients = ({ client, refresh }) => {
 
-    const { register, handleSubmit, setValue, reset, formState: { errors } } = useForm({
+    const { register, handleSubmit, reset, formState: { errors } } = useForm({
         defaultValues: {
             name: client.name,
             lastname: client.lastname,
@@ -57,6 +57,7 @@ const CardsClients = ({ client, refresh, clientId, visible }) => {
         await updateUser(selectedClient, data)
         message.success("Client edited successfully!")
         setLoading(false)
+        refresh(prev => !prev);
     }
 
     return (
