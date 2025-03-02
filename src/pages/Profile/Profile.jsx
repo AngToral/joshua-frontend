@@ -9,6 +9,7 @@ import { FaRegEdit } from 'react-icons/fa';
 import { ImCancelCircle } from "react-icons/im";
 import { message } from 'antd';
 import { IoLockClosed } from "react-icons/io5";
+import { IoIosLogOut } from 'react-icons/io';
 
 const Profile = () => {
 
@@ -25,7 +26,7 @@ const Profile = () => {
     const fileInputRef = useRef(null);
 
     const navigate = useNavigate();
-    const { userId } = useContext(authContext)
+    const { userId, setLogOut } = useContext(authContext)
 
     const getUserLogged = async () => {
         if (userId) {
@@ -112,6 +113,11 @@ const Profile = () => {
         message.success("An email has been sent successfully");
     }
 
+    const logout = () => {
+        setLogOut()
+        navigate("/login")
+    }
+
     return (
         <div className='h-screen'>
             <div className="flex justify-around items-center flex-wrap md:h-[130px] h-[100px] text-xl">
@@ -123,6 +129,9 @@ const Profile = () => {
                 <div className='flex flex-row gap-4'>
                     <button onClick={handleDashboard}>Dashboard</button>
                 </div>
+                <button variant="text" className="flex items-center link2 font-display text-foto-200 m-4 md:text-xl font-bold" onClick={logout}>
+                    <IoIosLogOut className="mr-2" /> Logout
+                </button>
             </div>
 
             <div className='my-16 flex justify-center gap-12'>

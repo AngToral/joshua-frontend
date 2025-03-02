@@ -5,19 +5,22 @@ import SetPassword from './pages/Password/setPassword'
 import Dashboard from './pages/Dashboard/Dashboard'
 import Profile from './pages/Profile/Profile'
 import Clients from './pages/Clients/Clients'
+import { authContext } from './components/context/authContext'
+import { useContext } from 'react'
 
 function App() {
 
+  const { isAuthenticated } = useContext(authContext)
 
   return (
     <>
       <Routes>
+        <Route path="/login" element={isAuthenticated ? <Navigate replace to={"/dashboard"} /> : <Login />} />
         <Route path='/' element={<Home />} />
-        <Route path='/login' element={<Login />} />
         <Route path='/setnewpassword/:userid' element={<SetPassword />} />
-        <Route path='/dashboard' element={<Dashboard />} />
-        <Route path='/profile' element={<Profile />} />
-        <Route path='/clients' element={<Clients />} />
+        <Route path='/dashboard' element={!isAuthenticated ? <Navigate replace to={"/login"} /> : <Dashboard />} />
+        <Route path='/profile' element={!isAuthenticated ? <Navigate replace to={"/login"} /> : <Profile />} />
+        <Route path='/clients' element={!isAuthenticated ? <Navigate replace to={"/login"} /> : <Clients />} />
       </Routes>
     </>
   )

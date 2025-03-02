@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form';
 import './dashboard.css'
 import '../Home/home.css'
 import ModalVideo from '../../components/video/ModalVideo';
+import { IoIosLogOut } from 'react-icons/io';
 
 const Dashboard = () => {
     const [userPic, setUserPic] = useState("")
@@ -25,7 +26,7 @@ const Dashboard = () => {
 
     const navigate = useNavigate();
     const [messageApi, contextHolder] = message.useMessage();
-    const { userId } = useContext(authContext)
+    const { userId, setLogOut } = useContext(authContext)
 
     useEffect(() => {
         getUserLogged();
@@ -107,6 +108,11 @@ const Dashboard = () => {
         }
     }
 
+    const logout = () => {
+        setLogOut()
+        navigate("/login")
+    }
+
     return (
         <>
             {contextHolder}
@@ -127,6 +133,9 @@ const Dashboard = () => {
                     <div className='flex items-center gap-2 cursor-pointer'>
                         <img src={userPic} alt="profile-pic" className='rounded-full h-12 w-12 object-cover' />
                         <a onClick={handleProfile}>Profile</a>
+                        <button variant="text" className="flex items-center link2 font-display text-foto-200 m-4 md:text-xl font-bold" onClick={logout}>
+                            <IoIosLogOut className="mr-2" /> Logout
+                        </button>
                     </div>
                 </div>
                 {

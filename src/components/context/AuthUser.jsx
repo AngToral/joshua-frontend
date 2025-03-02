@@ -7,6 +7,7 @@ const AuthUser = ({ children }) => {
     const { decodedToken, isExpired } = useJwt(token);
 
     const userId = decodedToken?.id
+    const isAuthenticated = !!token && !isExpired;
 
     const setLogOut = () => {
         localStorage.removeItem('access_token')
@@ -23,10 +24,10 @@ const AuthUser = ({ children }) => {
         if (isExpired) {
             setLogOut();
         }
-    }, []);
+    }, [isExpired]);
 
     return (
-        <authContext.Provider value={{ userId, token, setLogIn, setLogOut }}>
+        <authContext.Provider value={{ userId, token, setLogIn, setLogOut, isAuthenticated }}>
             {children}
         </authContext.Provider>
     )
