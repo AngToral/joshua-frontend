@@ -23,6 +23,9 @@ const Dashboard = () => {
     const [open, setOpen] = useState(false);
     const [selectedVideo, setSelectedVideo] = useState(null);
 
+    const [mobile, setMobile] = useState(window.innerWidth <= 766);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const navigate = useNavigate();
@@ -114,38 +117,73 @@ const Dashboard = () => {
         navigate("/login")
     }
 
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
     return (
         <>
             {contextHolder}
             <div className="h-screen">
-                <div className="flex justify-around items-center flex-wrap md:h-[130px] h-[100px] text-xl">
-                    <div className="flex items-center">
-                        <a>
-                            <img onClick={handleHome} src="logoCompletoGris.png" alt="logoJoshua" className='m-6 h-20 w-20 cursor-pointer' />
-                        </a>
-                    </div>
-                    {userType === "admin" &&
-                        <div className='flex flex-row gap-4'>
-                            {/* si eres Joshua */}
-                            <button className='link' onClick={() => setOpen(!open)}>Upload video</button>
-                            <button onClick={handleClients} className='link'>Clients</button>
+
+                <div className="fixed top-0 left-0 right-0 z-50 animate__animated animate__fadeIn">
+                    {mobile ?
+                        <nav className={isMenuOpen && `nav-menu`}>
+                            <div className="navbar-toggle text-3xl pl-4 pt-4 cursor-pointer" onClick={mobile ? toggleMenu : null}>
+                                {isMenuOpen ? (
+                                    <span className="">&times;</span>
+                                ) : (
+                                    <span className="">&#9776;</span>
+                                )}
+                            </div>
+                            {isMenuOpen &&
+                                <ul className="nav-links pl-10 pb-4 rounded-b-lg text-xl absolute nav-menu">
+                                    <li><a onClick={handleHome} className=''>Website</a></li>
+
+                                    {userType === "admin" &&
+                                        < >
+                                            {/* si eres Joshua */}
+                                            <li><a onClick={() => setOpen(!open)}>Upload video</a></li>
+                                            <li><a onClick={handleClients}>Clients</a></li>
+                                        </>
+                                    }
+
+                                    <li><a onClick={handleProfile} className=''>Profile</a></li>
+                                    <li><a onClick={logout} className=''>Logout</a></li>
+                                </ul>
+                            }
+                        </nav>
+                        :
+                        <div className="flex md:justify-around items-center flex-wrap md:h-[130px] text-xl">
+                            <div className="flex items-center">
+                                <a>
+                                    <img onClick={handleHome} src="logoCompletoGris.png" alt="logoJoshua" className='m-6 h-20 w-20 cursor-pointer' />
+                                </a>
+                            </div>
+                            {userType === "admin" &&
+                                <div className='flex flex-row gap-4'>
+                                    {/* si eres Joshua */}
+                                    <button className='link' onClick={() => setOpen(!open)}>Upload video</button>
+                                    <button onClick={handleClients} className='link'>Clients</button>
+                                </div>
+                            }
+                            <div className='flex items-center gap-2'>
+                                <a onClick={handleProfile} className='cursor-pointer flex items-center gap-3'>
+                                    <img src={userPic} alt="profile-pic" className='rounded-full h-12 w-12 object-cover' />
+                                    Profile
+                                </a>
+                                <button variant="text" className="flex items-center link2 font-display text-foto-200 m-4 md:text-xl font-bold" onClick={logout}>
+                                    <IoIosLogOut className="mr-2" /> Logout
+                                </button>
+                            </div>
                         </div>
                     }
-                    <div className='flex items-center gap-2'>
-                        <a onClick={handleProfile} className='cursor-pointer flex items-center gap-3'>
-                            <img src={userPic} alt="profile-pic" className='rounded-full h-12 w-12 object-cover' />
-                            Profile
-                        </a>
-                        <button variant="text" className="flex items-center link2 font-display text-foto-200 m-4 md:text-xl font-bold" onClick={logout}>
-                            <IoIosLogOut className="mr-2" /> Logout
-                        </button>
-                    </div>
                 </div>
                 {
                     loading ?
-                        <div className='h-screen flex justify-center items-center'><div className='loader'></div></div>
+                        <div className='flex justify-center items-center'><div className='loader'></div></div>
                         :
-                        <form className='flex justify-center' onChange={handleSubmit(onSubmitSearch)}>
+                        <form className='flex justify-center mt-20 mt-40' onChange={handleSubmit(onSubmitSearch)}>
                             <select name="Categories" className='h-10 w-40 p-2 rounded-lg bg-gray-800' {...register("categorySearch")} >
                                 <option value="All">All</option>
                                 <option value="Cardio">Cardio</option>

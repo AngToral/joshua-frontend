@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { getUserId, getUsers } from '../../apiService/userApi';
-import CardsClients from '../../components/clients/cardsClients';
+import CardsClients from '../../components/clients/CardsClients';
 import '../Dashboard/dashboard.css'
 import { authContext } from '../../components/context/authContext';
 import { Input, message } from "antd";
@@ -19,6 +19,9 @@ const Clients = () => {
     const [loading, setLoading] = useState(false);
     const [userPic, setUserPic] = useState("")
     const [filtering, setFiltering] = useState([]);
+
+    const [mobile, setMobile] = useState(window.innerWidth <= 766);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const navigate = useNavigate();
     const { userId } = useContext(authContext)
@@ -86,28 +89,55 @@ const Clients = () => {
         setOpen(false)
     }
 
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
     return (
         <>
             {contextHolder}
             <div className="h-screen">
-                <div className="flex justify-around items-center flex-wrap md:h-[130px] h-[100px] text-xl">
-                    <div className="flex items-center">
-                        <a>
-                            <img onClick={handleHome} src="logoCompletoGris.png" alt="logoJoshua" className='m-6 h-20 w-20 cursor-pointer' />
-                        </a>
+
+                {mobile ?
+                    <nav className={isMenuOpen && `nav-menu`}>
+                        <div className="navbar-toggle text-3xl pl-4 pt-4 cursor-pointer" onClick={mobile ? toggleMenu : null}>
+                            {isMenuOpen ? (
+                                <span className="">&times;</span>
+                            ) : (
+                                <span className="">&#9776;</span>
+                            )}
+                        </div>
+                        {isMenuOpen &&
+                            <ul className="nav-links pl-10 pb-4 rounded-b-lg text-xl absolute nav-menu">
+                                <li><a onClick={handleHome} className=''>Website</a></li>
+                                <li><a onClick={() => setOpen(!open)}>New client</a></li>
+                                <li><a onClick={handleDashboard}>Dashboard</a></li>
+                                <li><a onClick={handleProfile} className=''>Profile</a></li>
+                            </ul>
+                        }
+                    </nav>
+                    :
+
+                    <div className="flex justify-around items-center flex-wrap md:h-[130px] h-[100px] text-xl">
+                        <div className="flex items-center">
+                            <a>
+                                <img onClick={handleHome} src="logoCompletoGris.png" alt="logoJoshua" className='m-6 h-20 w-20 cursor-pointer' />
+                            </a>
+                        </div>
+                        <div className='flex flex-row gap-4'>
+                            <button onClick={() => setOpen(!open)}>New client</button>
+                            <button onClick={handleDashboard}>Dashboard</button>
+                        </div>
+                        <div className='flex items-center gap-2 cursor-pointer'>
+                            <a onClick={handleProfile} className='cursor-pointer flex items-center gap-3'>
+                                <img src={userPic} alt="profile-pic" className='rounded-full h-12 w-12 object-cover' />
+                                Profile
+                            </a>
+                        </div>
                     </div>
-                    <div className='flex flex-row gap-4'>
-                        <button onClick={() => setOpen(!open)}>New client</button>
-                        <button onClick={handleDashboard}>Dashboard</button>
-                    </div>
-                    <div className='flex items-center gap-2 cursor-pointer'>
-                        <a onClick={handleProfile} className='cursor-pointer flex items-center gap-3'>
-                            <img src={userPic} alt="profile-pic" className='rounded-full h-12 w-12 object-cover' />
-                            Profile
-                        </a>
-                    </div>
-                </div>
-                <div className="flex justify-center">
+                }
+
+                <div className="flex justify-center md:mt-20 mt-10">
                     <Search className="w-[320px]"
                         placeholder="Any campus"
                         allowClear

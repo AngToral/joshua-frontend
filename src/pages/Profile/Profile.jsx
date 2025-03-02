@@ -124,7 +124,7 @@ const Profile = () => {
 
     return (
         <div className='h-screen'>
-            <div className="flex justify-around items-center flex-wrap md:h-[130px] h-[100px] text-xl">
+            <div className="flex md:justify-around items-center flex-wrap md:h-[130px] h-[100px] text-xl">
                 <div className="flex items-center">
                     <a>
                         <img onClick={handleHome} src="logoCompletoGris.png" alt="logoJoshua" className='m-6 h-20 w-20 cursor-pointer' />
@@ -137,11 +137,11 @@ const Profile = () => {
                     <IoIosLogOut className="mr-2" /> Logout
                 </button>
             </div>
-            <div className='flex justify-center'>
+            <div className='flex justify-center mt-8'>
                 <p className='text-xl md:text-2xl sombra'>Welcome, {userLogged.name}!</p>
             </div>
-            <div className='my-16 flex justify-center gap-12'>
-                <div className='flex flex-col justify-center gap-5'>
+            <div className='md:m-16 m-8 flex md:flex-row flex-col justify-center gap-12'>
+                <div className='flex flex-col justify-center gap- items-center'>
                     <img src={userPic} alt="profile-pic" className='rounded-full h-56 w-56 object-cover' />
                     <input
                         type="file"
@@ -158,7 +158,7 @@ const Profile = () => {
                         {uploadingImage ? 'Uploading...' : 'Change image'}
                     </button>
                 </div>
-                <div className='w-[400px]'>
+                <div className='md:w-[400px] mb-10'>
                     <div className='flex justify-between gap-5 mb-5'>
                         {!inputAble ? <button onClick={() => setInputAble(!inputAble)}><ImCancelCircle className='h-5 w-5' /></button> :
                             <button onClick={() => setInputAble(!inputAble)}><FaRegEdit className='h-5 w-5' /></button>}
