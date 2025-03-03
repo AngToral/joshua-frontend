@@ -214,7 +214,7 @@ const Home = () => {
                 {/* about */}
 
                 <div id='aboutMe' className="about-me bg-joshua-50 text-black">
-                    <img className='image-me' src='./J3.jpg' />
+                    <img className='image-me' src='./J3.webp' />
                     <ScrollAnimation animateIn="animate__animated animate__fadeInUp" animateOnce={true}>
                         <div className="flex flex-col px-10 text-about-me py-4">
                             <p className='pb-4 font-bold text-xl animate__animated animate__fadeInUp'>Meet Joshua, Your Guide to Fitness Success!</p>
