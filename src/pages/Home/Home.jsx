@@ -207,7 +207,7 @@ const Home = () => {
                         <p className='font-bold md:text-6xl text-4xl lg:mb-6 mb-4 animate__animated animate__fadeInUp'>Your best version awaits you!</p>
                         <h1 className='font-bold md:text-4xl text-2xl md:mb-6 mb-4 animate__animated animate__fadeInUp'>I'm Joshua, a boxer and personal trainer</h1>
                         <p className='md:text-2xl text-lg md:mb-6 mb-4 animate__animated animate__fadeInUp'>Discover effective workouts to achieve your fitness goals. Start your transformation today!</p>
-                        <button onClick={scrollToContact} className='buttonLink buttonCallToAction animate__animated animate__fadeInUp'>Start today!</button>
+                        <button onClick={scrollToContact} className='buttonLink buttonCallToAction'>Start today!</button>
                     </div >
 
                 </div>
