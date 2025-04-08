@@ -24,12 +24,12 @@ const Footer = () => {
 
     return (
         <footer className="text-lg bg-joshua-700">
-            <div className="flex md:flex-row flex-col justify-center md:justify-around items-center mb-5 gap-5 md:gap-0">
+            <div className="flex md:flex-row flex-col justify-center md:justify-around items-end mb-5 gap-5 md:gap-0">
                 <a onClick={scrollToHome} >
                     <img src="./logoCompletoGris.png" alt="logo" className='h-36 w-36 mt-10 cursor-pointer' />
                 </a>
                 <div className='flex flex-col md:ml-16 justify-center gap-2'>
-                    <a href="">
+                    {/* <a href="">
                         <div className='flex gap-2 items-center'>
                             <FaInstagram className='h-4 w-4' />
                             <p className='flex items-center font-extralight'>@joshua</p>
@@ -38,7 +38,7 @@ const Footer = () => {
                     <div className='flex gap-2 items-center'>
                         <AiOutlineMail className='h-4 w-4' />
                         <p className='flex items-center font-extralight'>joshua@gmail.com</p>
-                    </div>
+                    </div> */}
                 </div>
                 <div className='flex flex-col items-start'>
                     <button className='font-extralight' onClick={handlePrivacy}>Privacy Policy</button>

@@ -260,8 +260,8 @@ const Home = () => {
                 {/* contacto */}
                 <div id='contact' className='flex md:flex-row flex-col h-[500px] bg-joshua-500 h-[850px] md:h-[550px]'>
                     <div className='contact-bg flex justify-center flex-col md:w-1/2'>
-                        <ScrollAnimation animateIn="animate__animated animate__fadeInUp" animateOnce={true} className='md:text-3xl text-2xl flex items-center ml-10 mt-10'>Contact me!</ScrollAnimation>
-                        <div className='flex flex-col ml-16 md:mb-10 h-[290px] justify-center gap-2'>
+                        {/* <ScrollAnimation animateIn="animate__animated animate__fadeInUp" animateOnce={true} className='md:text-3xl text-2xl flex items-center ml-10 mt-10'>Contact me!</ScrollAnimation> */}
+                        {/* <div className='flex flex-col ml-16 md:mb-10 h-[290px] justify-center gap-2'>
                             <a href="">
                                 <ScrollAnimation animateIn="animate__animated animate__fadeInUp" animateOnce={true} className='flex gap-2 items-center'>
                                     <FaInstagram className='h-6 w-6' />
@@ -272,7 +272,7 @@ const Home = () => {
                                 <AiOutlineMail className='h-6 w-6' />
                                 <p className='md:text-2xl text-xl flex items-center font-extralight'>joshua@gmail.com</p>
                             </ScrollAnimation>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="flex flex-col items-center justify-center text-lg md:w-1/2 ">
                         <div className="flex md:justify-start justify-center items-center" >
