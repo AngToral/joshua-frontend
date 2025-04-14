@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home/Home'
 import Login from './pages/Login/Login'
-import SetPassword from './pages/Password/setPassword'
+import SetPassword from './pages/Password/SetPassword'
 import Dashboard from './pages/Dashboard/Dashboard'
 import Profile from './pages/Profile/Profile'
 import Clients from './pages/Clients/Clients'
