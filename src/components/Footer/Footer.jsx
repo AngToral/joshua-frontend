@@ -24,7 +24,7 @@ const Footer = () => {
 
     return (
         <footer className="text-lg bg-joshua-700">
-            <div className="flex md:flex-row flex-col justify-center md:justify-around items-end mb-5 gap-5 md:gap-0">
+            <div className="flex md:flex-row flex-col justify-center md:justify-around md:items-end items-center mb-5 gap-5 md:gap-0">
                 <a onClick={scrollToHome} >
                     <img src="./logoCompletoGris.png" alt="logo" className='h-36 w-36 mt-10 cursor-pointer' />
                 </a>
@@ -40,7 +40,7 @@ const Footer = () => {
                         <p className='flex items-center font-extralight'>joshua@gmail.com</p>
                     </div> */}
                 </div>
-                <div className='flex flex-col items-start'>
+                <div className='flex flex-col md:items-start items-center'>
                     <button className='font-extralight' onClick={handlePrivacy}>Privacy Policy</button>
                     <button className='font-extralight' onClick={handleDashboard}>Dashboard</button>
                 </div>
