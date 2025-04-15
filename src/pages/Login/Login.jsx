@@ -154,7 +154,9 @@ const Login = () => {
                                         {errors.password && <span className='text-red-400'>This field is required</span>}
 
                                         <button type='submit' className="text-xl">
-                                            {loading ? "Loading..." : "Login"}
+                                            {loading ?
+                                                <div className='flex justify-center'><div className='loader'></div></div> :
+                                                "Login"}
                                         </button>
                                     </div>
                                 </form>
