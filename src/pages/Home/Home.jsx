@@ -225,11 +225,11 @@ const Home = () => {
                     </ScrollAnimation>
                 </div>
                 {/* servicios */}
-                <div id='services' className="flex flex-col items-center text-lg bg-joshua-100 p-10 h-screen">
-                    <ScrollAnimation animateIn="animate__animated animate__fadeInUp" animateOnce={true} className='flex justify-center items-end md:h-[150px] md:text-4xl text-2xl md:m-0 mb-8'>
+                <div id='services' className="flex flex-col items-center text-lg bg-joshua-100 p-10 h-auto">
+                    <ScrollAnimation animateIn="animate__animated animate__fadeInUp" animateOnce={true} className='flex justify-center items-end md:text-4xl text-2xl pt-12'>
                         Services and plans
                     </ScrollAnimation>
-                    <ScrollAnimation animateIn="animate__animated animate__fadeInUp" animateOnce={true} className="flex justify-center flex-col md:flex-row items-center text-lg h-screen bg-joshua-100 gap-8 ">
+                    <ScrollAnimation animateIn="animate__animated animate__fadeInUp" animateOnce={true} className="flex justify-center flex-col md:flex-row items-center text-lg bg-joshua-100 gap-8 py-12">
                         <div className='flex flex-col gap-5'>
                             <div className='max-w-80 flex flex-col items-center justify-center'>
                                 <BsPersonArmsUp className='md:h-16 md:w-16 h-8 w-8 md:mb-4' />
@@ -257,7 +257,7 @@ const Home = () => {
                     </ScrollAnimation>
                 </div>
                 {/* contacto */}
-                <div id='contact' className='flex md:flex-row flex-col h-[500px] bg-joshua-500 h-auto md:h-[550px]'>
+                <div id='contact' className='flex md:flex-row flex-col bg-joshua-500 h-auto'>
                     <div className='contact-bg flex justify-center flex-col md:w-1/2'>
                         {/* <ScrollAnimation animateIn="animate__animated animate__fadeInUp" animateOnce={true} className='md:text-3xl text-2xl flex items-center ml-10 mt-10'>Contact me!</ScrollAnimation> */}
                         <div className='flex flex-col ml-16 md:mb-10 h-[390px] justify-center gap-2'>
