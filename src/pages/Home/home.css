@@ -18,7 +18,7 @@
 }
 
 .contact-bg {
-    background-image: url("../J1.webp");
+    background-image: url("./J1.webp");
     background-color: rgba(0, 0, 0, 0.4);
     background-blend-mode: darken;
     background-repeat: no-repeat;
