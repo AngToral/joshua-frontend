@@ -123,76 +123,78 @@ const Profile = () => {
     }
 
     return (
-        <div className='h-screen'>
-            <div className="flex md:justify-around items-center flex-wrap md:h-[130px] h-[100px] text-xl">
-                <div className="flex items-center">
-                    <a>
-                        <img onClick={handleHome} src="logoCompletoGris.png" alt="logoJoshua" className='m-6 h-20 w-20 cursor-pointer' />
-                    </a>
-                </div>
-                <div className='flex flex-row gap-4'>
-                    <button onClick={handleDashboard}>Dashboard</button>
-                </div>
-                <button variant="text" className="flex items-center link2 font-display text-foto-200 m-4 md:text-xl font-bold" onClick={logout}>
-                    <IoIosLogOut className="mr-2" /> Logout
-                </button>
-            </div>
-            <div className='flex justify-center mt-8'>
-                <p className='text-xl md:text-2xl sombra'>Welcome, {userLogged.name}!</p>
-            </div>
-            <div className='md:m-16 m-8 flex md:flex-row flex-col justify-center gap-12'>
-                <div className='flex flex-col justify-center gap- items-center'>
-                    <img src={userPic} alt="profile-pic" className='rounded-full h-56 w-56 object-cover' />
-                    <input
-                        type="file"
-                        ref={fileInputRef}
-                        onChange={handleFileSelect}
-                        accept="image/*"
-                        style={{ display: 'none' }}
-                    />
-                    <button
-                        onClick={handleChangeImage}
-                        disabled={uploadingImage}
-                        className={uploadingImage ? 'opacity-50 cursor-not-allowed' : ''}
-                    >
-                        {uploadingImage ? 'Uploading...' : 'Change image'}
+        <>
+            <div className='h-full'>
+                <div className="flex md:justify-around items-center flex-wrap md:h-[130px] h-[100px] text-xl">
+                    <div className="flex items-center">
+                        <a>
+                            <img onClick={handleHome} src="logoCompletoGris.png" alt="logoJoshua" className='m-6 h-20 w-20 cursor-pointer' />
+                        </a>
+                    </div>
+                    <div className='flex flex-row gap-4'>
+                        <button onClick={handleDashboard}>Dashboard</button>
+                    </div>
+                    <button variant="text" className="flex items-center link2 font-display text-foto-200 m-4 md:text-xl font-bold" onClick={logout}>
+                        <IoIosLogOut className="mr-2" /> Logout
                     </button>
                 </div>
-                <div className='md:w-[400px] mb-10'>
-                    <div className='flex justify-between gap-5 mb-5'>
-                        {!inputAble ? <button onClick={() => setInputAble(!inputAble)}><ImCancelCircle className='h-5 w-5' /></button> :
-                            <button onClick={() => setInputAble(!inputAble)}><FaRegEdit className='h-5 w-5' /></button>}
-                        <button onClick={newPassword} className='flex gap-2 items-center'><IoLockClosed className='h-5 w-5' />Change password</button>
-                    </div>
-
-                    <form onSubmit={handleSubmit(onSubmit)} >
-                        <div className="flex flex-col">
-                            <p><strong>Name: </strong>
-                                <input disabled={inputAble} {...register("name", { required: true })} className={inputAble ? 'bg-transparent border-transparent border-[1px] font-light w-[200px]' : 'rounded-lg border-[1px] font-light px-2 w-[240px]'} />
-                            </p>
-                            <p><strong>Lastname: </strong>
-                                <input disabled={inputAble} {...register("lastname", { required: true })} className={inputAble ? 'bg-transparent border-transparent border-[1px] font-light w-[200px]' : 'rounded-lg border-[1px] font-light px-2 w-[240px]'} />
-                            </p>
-                            <p><strong>Email: </strong>
-                                <input disabled={inputAble} {...register("email", { required: true })} className={inputAble ? 'bg-transparent border-transparent border-[1px] font-light w-[200px]' : 'rounded-lg border-[1px] font-light px-2 w-[240px]'} />
-                            </p>
-                            <p><strong>Plan: </strong>
-                                <input disabled {...register("plan")} className='bg-transparent border-transparent border-[1px] font-light' />
-                            </p>
-                            <p><strong>Status: </strong>
-                                {userLogged.status === "active" ? " 🟢 " : " 🔴 "}
-                                <input disabled {...register("status")} className='bg-transparent border-transparent border-[1px] font-light' />
-                            </p>
-                            {loading ? <div className='flex justify-center'><div className="loader"></div></div> :
-                                !inputAble &&
-                                <button className="flex justify-end" type='submit'><FaRegCircleCheck className='h-6 w-6' /></button>
-                            }
-                        </div>
-                    </form>
+                <div className='flex justify-center mt-8'>
+                    <p className='text-xl md:text-2xl sombra'>Welcome, {userLogged.name}!</p>
                 </div>
-            </div>
+                <div className='md:m-16 m-8 flex md:flex-row flex-col justify-center gap-12'>
+                    <div className='flex flex-col justify-center gap- items-center'>
+                        <img src={userPic} alt="profile-pic" className='rounded-full h-56 w-56 object-cover' />
+                        <input
+                            type="file"
+                            ref={fileInputRef}
+                            onChange={handleFileSelect}
+                            accept="image/*"
+                            style={{ display: 'none' }}
+                        />
+                        <button
+                            onClick={handleChangeImage}
+                            disabled={uploadingImage}
+                            className={uploadingImage ? 'opacity-50 cursor-not-allowed' : ''}
+                        >
+                            {uploadingImage ? 'Uploading...' : 'Change image'}
+                        </button>
+                    </div>
+                    <div className='md:w-[400px] mb-10'>
+                        <div className='flex justify-between gap-5 mb-5'>
+                            {!inputAble ? <button onClick={() => setInputAble(!inputAble)}><ImCancelCircle className='h-5 w-5' /></button> :
+                                <button onClick={() => setInputAble(!inputAble)}><FaRegEdit className='h-5 w-5' /></button>}
+                            <button onClick={newPassword} className='flex gap-2 items-center'><IoLockClosed className='h-5 w-5' />Change password</button>
+                        </div>
+
+                        <form onSubmit={handleSubmit(onSubmit)} className='w-auto'>
+                            <div className="flex flex-col">
+                                <p><strong>Name: </strong>
+                                    <input disabled={inputAble} {...register("name", { required: true })} className={inputAble ? 'bg-transparent border-transparent border-[1px] font-light w-[280px]' : 'rounded-lg border-[1px] font-light px-2 w-[240px]'} />
+                                </p>
+                                <p><strong>Lastname: </strong>
+                                    <input disabled={inputAble} {...register("lastname", { required: true })} className={inputAble ? 'bg-transparent border-transparent border-[1px] font-light w-[280px]' : 'rounded-lg border-[1px] font-light px-2 w-[240px]'} />
+                                </p>
+                                <p><strong>Email: </strong>
+                                    <input disabled={inputAble} {...register("email", { required: true })} className={inputAble ? 'bg-transparent border-transparent border-[1px] font-light w-[280px]' : 'rounded-lg border-[1px] font-light px-2 w-[240px]'} />
+                                </p>
+                                <p><strong>Plan: </strong>
+                                    <input disabled {...register("plan")} className='bg-transparent border-transparent border-[1px] font-light' />
+                                </p>
+                                <p><strong>Status: </strong>
+                                    {userLogged.status === "active" ? " 🟢 " : " 🔴 "}
+                                    <input disabled {...register("status")} className='bg-transparent border-transparent border-[1px] font-light' />
+                                </p>
+                                {loading ? <div className='flex justify-center'><div className="loader"></div></div> :
+                                    !inputAble &&
+                                    <button className="flex justify-end" type='submit'><FaRegCircleCheck className='h-6 w-6' /></button>
+                                }
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div >
             <Footer />
-        </div >
+        </>
     )
 }
 
