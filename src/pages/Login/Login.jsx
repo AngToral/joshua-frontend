@@ -64,6 +64,12 @@ const Login = () => {
                 content: "You have to change your password first",
             })
         }
+        if (response.msg === "You missed some parameter") {
+            return messageApi.open({
+                type: 'error',
+                content: "Error! please contact IT support.",
+            })
+        }
     }
 
     const { register: register2, handleSubmit: handleSubmit2, reset: reset2, formState: { errors: errors2 } } = useForm();
