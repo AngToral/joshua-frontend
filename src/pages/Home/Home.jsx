@@ -212,7 +212,7 @@ const Home = () => {
 
                 </div>
                 {/* about */}
-                <div id='aboutMe' className="about-me bg-joshua-50 text-black pb-8">
+                <div id='aboutMe' className="about-me bg-joshua-50 text-black">
                     <img className='image-me' src='./J3.webp' />
                     <ScrollAnimation animateIn="animate__animated animate__fadeInUp" animateOnce={true}>
                         <div className="flex flex-col px-10 text-about-me py-4">
@@ -257,7 +257,7 @@ const Home = () => {
                     </ScrollAnimation>
                 </div>
                 {/* contacto */}
-                <div id='contact' className='flex md:flex-row flex-col h-[500px] bg-joshua-500 h-auto md:h-[550px] pb-10'>
+                <div id='contact' className='flex md:flex-row flex-col h-[500px] bg-joshua-500 h-auto md:h-[550px]'>
                     <div className='contact-bg flex justify-center flex-col md:w-1/2'>
                         {/* <ScrollAnimation animateIn="animate__animated animate__fadeInUp" animateOnce={true} className='md:text-3xl text-2xl flex items-center ml-10 mt-10'>Contact me!</ScrollAnimation> */}
                         <div className='flex flex-col ml-16 md:mb-10 h-[390px] justify-center gap-2'>
@@ -273,7 +273,7 @@ const Home = () => {
                             </ScrollAnimation> */}
                         </div>
                     </div>
-                    <div className="flex flex-col items-center justify-center text-lg md:w-1/2 pt-8">
+                    <div className="flex flex-col items-center justify-center text-lg md:w-1/2 py-8">
                         <div className="flex md:justify-start justify-center items-center" >
                             <ScrollAnimation animateIn="animate__animated animate__fadeInUp" animateOnce={true}>
                                 <div className="flex flex-col justify-center items-center">
