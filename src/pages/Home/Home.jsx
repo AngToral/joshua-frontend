@@ -128,7 +128,7 @@ const Home = () => {
             {contextHolder}
             <div>
                 <div id='home' className='encabezado'>
-                    <video className="myVideo animate__animated animate__fadeIn" autoPlay loop muted>
+                    <video className="myVideo animate__animated animate__fadeIn" autoPlay loop muted playsInline>
                         <source src="hero-joshua-home.mp4" type="video/mp4" />
                     </video>
                     <div className="fixed top-0 left-0 right-0 z-50 animate__animated animate__fadeIn">
