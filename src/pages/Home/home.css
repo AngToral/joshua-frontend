@@ -1,10 +1,15 @@
 .encabezado {
     /* background-image: url("../J5.png"); */
+    position: relative;
     background-color: rgba(0, 0, 0, 0.4);
     background-blend-mode: darken;
     background-size: cover;
     background-position: center;
     height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    /* Alternativa para móviles */
+    width: 100%;
+    overflow: hidden;
 }
 
 .myVideo {
@@ -14,7 +19,9 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    /* Alternativa para móviles */
 }
 
 .contact-bg {
