@@ -52,15 +52,20 @@ const ModalVideo = ({ visible, onCancel, refresh, videoId }) => {
         refresh(prev => !prev)
     }
 
+    const cancel = () => {
+        onCancel();
+        reset();
+    }
+
     return (
         <>
             {contextHolder}
             <Modal
                 title={videoId ? "Edit Video" : "New Video"}
                 open={visible}
-                onCancel={onCancel}
+                onCancel={cancel}
                 footer={[
-                    <button onClick={onCancel}>
+                    <button onClick={cancel}>
                         Cancel
                     </button>
                 ]}

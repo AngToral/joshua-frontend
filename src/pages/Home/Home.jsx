@@ -109,6 +109,7 @@ const Home = () => {
     };
     const handleCancel = () => {
         setIsModalOpen(false);
+        reset2();
     };
 
     function handleLogin() {
