@@ -188,7 +188,6 @@ const Dashboard = () => {
                                 <option value="All">All</option>
                                 <option value="Cardio">Cardio</option>
                                 <option value="Boxing">Boxing</option>
-                                <option value="GYM">GYM</option>
                                 <option value="Nutrition">Nutrition</option>
                                 <option value="Injuries">Injuries</option>
                                 <option value="Stretching">Stretching</option>
