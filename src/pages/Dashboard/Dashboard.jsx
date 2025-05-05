@@ -212,6 +212,7 @@ const Dashboard = () => {
                         }
                     </div>
                 </div>
+                <Footer />
                 {/* modal de upload/editar video */}
                 <ModalVideo
                     visible={open}
@@ -219,7 +220,6 @@ const Dashboard = () => {
                     refresh={refresh}
                     videoId={selectedVideo}
                 />
-                <Footer />
             </div>
         </>
     )

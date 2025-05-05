@@ -149,18 +149,22 @@ const Clients = () => {
                     <div className='h-screen flex justify-center items-center'><div className='loader'></div></div>
                     :
                     <div className="flex flex-col">
-                        <div className='m-10 flex flex-wrap justify-center flex-wrap gap-10'>
-                            {(filtering.length > 0 ? filtering : allClients)
-                                .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-                                .map(client =>
-                                    <CardsClients
-                                        key={client._id}
-                                        client={client}
-                                        refresh={refresh}
-                                        clientId={selectedClient}
-                                        visible={open}
-                                    />
-                                )}
+                        <div className='m-10 flex flex-wrap justify-center gap-10'>
+                            {allClients.length === 0 ? <img src='./empty.png' className='h-52 w-52' /> :
+                                (loading ? <div className="loader"></div> :
+
+                                    (filtering.length > 0 ? filtering : allClients)
+                                        .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+                                        .map(client =>
+                                            <CardsClients
+                                                key={client._id}
+                                                client={client}
+                                                refresh={refresh}
+                                                clientId={selectedClient}
+                                                visible={open}
+                                            />
+                                        ))
+                            }
                         </div>
                     </div>}
                 <Footer />
