@@ -215,22 +215,22 @@ const Home = () => {
                 {/* about */}
                 <div id='aboutMe' className="about-me bg-joshua-50 text-black">
                     <img className='image-me' src='./J3.webp' />
-                    <ScrollAnimation animateIn="animate__animated animate__fadeInUp" animateOnce={true}>
-                        <div className="flex flex-col px-10 text-about-me py-4">
+                    <div className="flex flex-col px-10 text-about-me py-4">
+                        <ScrollAnimation animateIn="animate__animated animate__fadeInUp" animateOnce={true}>
                             <p className='pb-4 font-bold text-xl animate__animated animate__fadeInUp'>Meet Joshua, Your Guide to Fitness Success!</p>
                             <p className='pb-4'>A passionate personal trainer dedicated to helping you achieve your fitness goals. Whether you' re looking to lose weight, build strength, improve your overall health, or simply feel better in your own skin, I'm here to guide you every step of the way.</p>
                             <p className='pb-4'>I'm a family man who understands the importance of balance and prioritization in life.</p>
                             <p className='pb-4'>I'm known for my quickness and agility. They even call me "the plague" because I'm always one step ahead of my opponents!
                                 I'm excited to share my knowledge and experience with you. Let's work together to achieve your fitness dreams!</p>
-                        </div>
-                    </ScrollAnimation>
+                        </ScrollAnimation>
+                    </div>
                 </div>
                 {/* servicios */}
                 <div id='services' className="flex flex-col items-center text-lg bg-joshua-100 p-10 h-auto">
-                    <ScrollAnimation animateIn="animate__animated animate__fadeInUp" animateOnce={true} className='flex justify-center items-end md:text-4xl text-2xl pt-12'>
+                    <ScrollAnimation animateIn="animate__animated animate__fadeIn" animateOnce={true} className='flex justify-center items-end md:text-4xl text-2xl pt-12'>
                         Services and plans
                     </ScrollAnimation>
-                    <ScrollAnimation animateIn="animate__animated animate__fadeInUp" animateOnce={true} className="flex justify-center flex-col md:flex-row items-center text-lg bg-joshua-100 gap-8 py-12">
+                    <ScrollAnimation animateIn="animate__animated animate__fadeIn" animateOnce={true} className="flex justify-center flex-col md:flex-row items-center text-lg bg-joshua-100 gap-8 py-12">
                         <div className='flex flex-col gap-5'>
                             <div className='max-w-80 flex flex-col items-center justify-center'>
                                 <BsPersonArmsUp className='md:h-16 md:w-16 h-8 w-8 md:mb-4' />
@@ -276,7 +276,7 @@ const Home = () => {
                     </div>
                     <div className="flex flex-col items-center justify-center text-lg md:w-1/2 py-8">
                         <div className="flex md:justify-start justify-center items-center" >
-                            <ScrollAnimation animateIn="animate__animated animate__fadeInUp" animateOnce={true}>
+                            <ScrollAnimation animateIn="animate__animated animate__fadeIn" animateOnce={true}>
                                 <div className="flex flex-col justify-center items-center">
                                     <p className="flex mt-5 mx-8 md:text-3xl text-xl font-extralight">
                                         Are you clear about it? Subscribe now:

@@ -183,7 +183,7 @@ const Dashboard = () => {
                     loading ?
                         <div className='flex justify-center items-center'><div className='loader'></div></div>
                         :
-                        <form className='flex justify-center mt-20 mt-40' onChange={handleSubmit(onSubmitSearch)}>
+                        <form className='flex justify-center mt-40' onChange={handleSubmit(onSubmitSearch)}>
                             <select name="Categories" className='h-10 w-40 p-2 rounded-lg bg-gray-800' {...register("categorySearch")} >
                                 <option value="All">All</option>
                                 <option value="Cardio">Cardio</option>
