@@ -82,11 +82,11 @@ const ModalVideo = ({ visible, onCancel, refresh, videoId }) => {
                             <div className='flex'>
                                 <label className='font-light mr-3'>Select a category:</label>
                                 <select {...register("category", { required: true })} className='bg-transparent font-extralight'>
-                                    <option value="Cardio">Cardio</option>
-                                    <option value="Boxing">Boxing</option>
-                                    <option value="Nutrition">Nutrition</option>
-                                    <option value="Injuries">Injuries</option>
-                                    <option value="Stretching">Stretching</option>
+                                    <option value="Private sessions">Private sessions</option>
+                                    <option value="Small group">Small group</option>
+                                    <option value="Indoor">Indoor</option>
+                                    <option value="Outdoor">Outdoor</option>
+                                    <option value="At home">At home</option>
                                 </select>
                                 {errors.category && <span className='text-red-400'>This field is required</span>}
                             </div>

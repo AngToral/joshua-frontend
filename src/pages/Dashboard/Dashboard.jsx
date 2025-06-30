@@ -73,19 +73,20 @@ const Dashboard = () => {
         setLoading(true)
         const response = await getTrainings();
         const notRemoved = response.filter((training) => !training.removeAt);
-        const planFiltered = notRemoved.filter((training) => {
-            if (userPlan === "Basic") {
-                return ["Cardio", "Boxing", "GYM"].includes(training.category);
-            }
-            if (userPlan === "Plus") {
-                return ["Cardio", "Boxing", "GYM", "Nutrition"].includes(training.category);
-            }
-            if (userPlan === "Pro" || userType === "admin") {
-                return ["Cardio", "Boxing", "GYM", "Nutrition", "Injuries", "Stretching"].includes(training.category);
-            }
-            return false;
-        });
-        if (response.length) setAllTrainings(planFiltered);
+        //me ha cambiado los filtros y no tienen sentido con los planes ahora
+        // const planFiltered = notRemoved.filter((training) => {
+        //     if (userPlan === "Basic") {
+        //         return ["Cardio", "Boxing", "GYM"].includes(training.category);
+        //     }
+        //     if (userPlan === "Plus") {
+        //         return ["Cardio", "Boxing", "GYM", "Nutrition"].includes(training.category);
+        //     }
+        //     if (userPlan === "Pro" || userType === "admin") {
+        //         return ["Cardio", "Boxing", "GYM", "Nutrition", "Injuries", "Stretching"].includes(training.category);
+        //     }
+        //     return false;
+        // });
+        if (response.length) setAllTrainings(notRemoved);
         setLoading(false);
     };
 
@@ -186,11 +187,11 @@ const Dashboard = () => {
                         <form className='flex justify-center mt-40' onChange={handleSubmit(onSubmitSearch)}>
                             <select name="Categories" className='h-10 w-40 p-2 rounded-lg bg-gray-800' {...register("categorySearch")} >
                                 <option value="All">All</option>
-                                <option value="Cardio">Cardio</option>
-                                <option value="Boxing">Boxing</option>
-                                <option value="Nutrition">Nutrition</option>
-                                <option value="Injuries">Injuries</option>
-                                <option value="Stretching">Stretching</option>
+                                <option value="Private sessions">Private sessions</option>
+                                <option value="Small group">Small group</option>
+                                <option value="Indoor">Indoor</option>
+                                <option value="Outdoor">Outdoor</option>
+                                <option value="At home">At home</option>
                             </select>
                         </form>}
                 <div className="flex flex-col items-center">
